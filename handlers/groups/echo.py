@@ -24,7 +24,7 @@ async def my_rating(message:types.Message):
     if user_info:
         await message.answer(f"Твій рейтинг становить: {user_info[0]} балів")
     else:
-        await message.answer(f"Ти ще не отримав бали, тому твій рейтинг становить 0 балів")
+        await message.answer(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
 @dp.message_handler(IsReplyDiaStickers(), IsGroup(), content_types=types.ContentTypes.STICKER)
 async def increase_rating(message:types.Message, new_rating, is_cheater):
