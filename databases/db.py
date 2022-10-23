@@ -43,12 +43,16 @@ class Database():
             _, _, fullname = self.user.get_info(user_id)
             toplist.append([fullname, user_rating[1]])
         return sorted(toplist, key=lambda l: l[1], reverse=True)
-    def get_rating(self, user_id, group_id):
+    def get_rating(self, group_id, user_id):
         sql_rating = f"SELECT rating FROM users_rating WHERE user_id='{user_id}' AND group_id='{group_id}'"
         self.cursor.execute(sql_rating)
         return self.cursor.fetchone()
-    def add_rating(self, user_id, group_id, rating):
-        current_rating = self.get_rating(user_id, group_id)[0]
+    def add_rating(self, group_id, user_id, rating=0):
+        sql_relations = f"INSERT INTO users_rating(user_id, group_id, rating) VALUES('{user_id}', '{group_id}', {rating})"
+        self.cursor.execute(sql_relations)
+        self.connection.commit()
+    def set_rating(self, group_id, user_id, rating):
+        current_rating = self.get_rating(group_id, user_id)[0]
         sql_update_rating = f"UPDATE users_rating SET rating={current_rating+rating} WHERE user_id='{user_id}' AND group_id='{group_id}'"
         self.cursor.execute(sql_update_rating)
         self.connection.commit()

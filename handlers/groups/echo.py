@@ -20,7 +20,7 @@ async def get_top(message:types.Message):
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
 async def my_rating(message:types.Message):
-    user_info = db.get_rating(message.from_user.id, message.chat.id)
+    user_info = db.get_rating(message.chat.id, message.from_user.id)
     if user_info:
         await message.answer(f"Твій рейтинг становить: {user_info[0]} балів")
     else:

@@ -10,6 +10,7 @@ class GetDBUserMiddleware(BaseMiddleware):
             if message.sticker.thumb.file_unique_id in sticker_uid_values.keys():
                 reply_message = message.reply_to_message
                 user = db.user.get_info(reply_message.from_user.id)
+
                 if not user:
                     db.user.add(
                         group_id=message.chat.id,
@@ -17,15 +18,18 @@ class GetDBUserMiddleware(BaseMiddleware):
                         username=reply_message.from_user.username,
                         fullname=reply_message.from_user.full_name,
                 )
+                if not db.get_rating(message.chat.id, reply_message.from_user.id):
+                    db.add_rating(message.chat.id, reply_message.from_user.id)
+
                 data["is_cheater"] = message.from_user.id == reply_message.from_user.id
                 if message.from_user.id != reply_message.from_user.id:
-                    data["new_rating"] = db.add_rating(
+                    data["new_rating"] = db.set_rating(
                         user_id=reply_message.from_user.id,
                         group_id=message.chat.id,
                         rating=sticker_uid_values[message.sticker.thumb.file_unique_id]
                     )
                 else:
-                    data["new_rating"] = db.add_rating(
+                    data["new_rating"] = db.set_rating(
                         user_id=reply_message.from_user.id,
                         group_id=message.chat.id,
                         rating=-50
