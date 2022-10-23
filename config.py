@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from aiogram.utils.markdown import bold, hlink
+from aiogram.utils.markdown import hlink
 import os
 
 # load data from .env
