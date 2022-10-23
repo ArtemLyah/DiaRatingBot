@@ -1,5 +1,2 @@
 aiogram
-# aioredis - when RedisStorage2
-
-# pymongo - when MongoStorage
-# motor 
+psycopg2
