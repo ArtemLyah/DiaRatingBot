@@ -8,12 +8,18 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 father_id = 905143300
-
 sticker_uid_values = {
     "AQADpwsAAo1TYEly" : 10,
     "AQADVgsAAvl0aEly" : 50,
     "AQAD6w8AApJ2YUly" : -10,
     "AQAD8gsAAuATYUly" : -50
+}
+
+database_settings = {
+    "host" : "ec2-44-209-24-62.compute-1.amazonaws.com",
+    "user" : "stvaakvypgcacb",
+    "password" : "82a34a9d74978990fe9a87303f7d3dd642c848a3be8edc19ce4fc03461d9d36f",
+    "database" : "d7bit1v98dc4gs"
 }
 
 help_text = f"""Привіт я <b>{'Дія.Рейтинг'}</b> бот, я рахую рейтинг учасників в чаті.

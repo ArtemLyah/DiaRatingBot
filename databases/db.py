@@ -1,5 +1,5 @@
 import psycopg2 as pg
-
+from config import database_settings
 
 class User():
     def __init__(self, db) -> None:
@@ -29,11 +29,7 @@ class Group():
 
 class Database():
     def __init__(self, user, password, database, host="localhost") -> None:
-        self.connection = pg.connect(
-            host = host,
-            user=user, 
-            password=password,
-            database=database)
+        self.connection = pg.connect(**database_settings)
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
@@ -46,7 +42,7 @@ class Database():
             user_id = user_rating[0]
             _, _, fullname = self.user.get_info(user_id)
             toplist.append([fullname, user_rating[1]])
-        return sorted(toplist, key=lambda l: l[1])
+        return sorted(toplist, key=lambda l: l[1], reverse=True)
     def get_rating(self, user_id, group_id):
         sql_rating = f"SELECT rating FROM users_rating WHERE user_id='{user_id}' AND group_id='{group_id}'"
         self.cursor.execute(sql_rating)
