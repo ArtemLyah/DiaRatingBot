@@ -30,7 +30,7 @@ async def my_rating(message:types.Message):
 async def increase_rating(message:types.Message, new_rating, is_cheater):
     if is_cheater:
         await message.reply_sticker("CAACAgIAAx0CbprKMgACA0pjVXxR0_nkabtuQxJax8PXxLtIRwAC8gsAAuATYUnr_8GD-UUo9SoE")
-        await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався змінити свій рейтинг 👎")
+        await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався повисити свій рейтинг 👎")
         await message.answer(f"Рейтинг у чітера тепер становить {new_rating} балів")
     else:
         fullname = message.reply_to_message.from_user.full_name

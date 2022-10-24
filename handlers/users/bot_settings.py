@@ -1,6 +1,5 @@
 from aiogram import filters, types
-from dispatcher import dp, db
-from config import help_text
+from dispatcher import dp
 from filters import IsFatherPrivate
 
 # handle private messages
