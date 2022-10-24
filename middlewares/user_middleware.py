@@ -21,8 +21,8 @@ class GetDBUserMiddleware(BaseMiddleware):
                 if not db.get_rating(message.chat.id, reply_message.from_user.id):
                     db.add_rating(message.chat.id, reply_message.from_user.id)
 
-                data["is_cheater"] = message.from_user.id == reply_message.from_user.id
-                if message.from_user.id != reply_message.from_user.id:
+                data["is_cheater"] = message.from_user.id == reply_message.from_user.id and sticker_uid_values[message.sticker.thumb.file_unique_id] > 0
+                if data["is_cheater"]:
                     data["new_rating"] = db.set_rating(
                         user_id=reply_message.from_user.id,
                         group_id=message.chat.id,
