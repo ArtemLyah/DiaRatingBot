@@ -6,7 +6,6 @@ import os
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-database_settings = os.getenv("database_settings")
 
 father_id = 905143300
 sticker_uid_values = {
@@ -16,6 +15,12 @@ sticker_uid_values = {
     "AQAD8gsAAuATYUly" : -50
 }
 
+database_settings = {
+    "host" : os.getenv("db_host"),
+    "user" : os.getenv("db_user"),
+    "password" : os.getenv("db_password"),
+    "database" : os.getenv("db_database")
+}
 
 help_text = f"""Привіт я <b>{'Дія.Рейтинг'}</b> бот, я рахую рейтинг учасників в чаті.
 
