@@ -169,7 +169,7 @@ def status_text(rating):
             "Студенти КПІ Вас хейтять!"
         ]
     )
-    elif rating <= 2000: return random.choice(
+    elif rating <= -2000: return random.choice(
         [
             "До вас виїхали! Не намагайтеся чинити опір!",
             "Над вашою хатою літає Байрактар!",
