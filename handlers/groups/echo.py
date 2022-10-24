@@ -1,6 +1,6 @@
 from aiogram import filters, types
 from dispatcher import dp, db
-from config import help_text
+from config import help_text, status_text
 from filters import IsGroup, IsReplyDiaStickers
 
 # handle private messages
@@ -22,7 +22,7 @@ async def get_top(message:types.Message):
 async def my_rating(message:types.Message):
     user_info = db.get_rating(message.chat.id, message.from_user.id)
     if user_info:
-        await message.answer(f"Твій рейтинг становить: {user_info[0]} балів")
+        await message.answer(f"Твій рейтинг становить: {user_info[0]} балів\n"+status_text(user_info[0]))
     else:
         await message.answer(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
@@ -31,7 +31,7 @@ async def increase_rating(message:types.Message, new_rating, is_cheater):
     if is_cheater:
         await message.reply_sticker("CAACAgIAAx0CbprKMgACA0pjVXxR0_nkabtuQxJax8PXxLtIRwAC8gsAAuATYUnr_8GD-UUo9SoE")
         await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався повисити свій рейтинг 👎")
-        await message.answer(f"Рейтинг у чітера тепер становить {new_rating} балів")
+        await message.answer(f"Рейтинг у чітера тепер становить {new_rating} балів\n"+status_text(new_rating))
     else:
         fullname = message.reply_to_message.from_user.full_name
-        await message.answer(f"{message.sticker.emoji} Рейтинг у {fullname} тепер становить {new_rating} балів {message.sticker.emoji}")
+        await message.answer(f"{message.sticker.emoji} Рейтинг у {fullname} тепер становить {new_rating} балів {message.sticker.emoji}\n"+status_text(new_rating))
