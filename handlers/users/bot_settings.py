@@ -4,10 +4,10 @@ from config import help_text
 from filters import IsFatherPrivate
 
 # handle private messages
-@dp.message_handler(filters.CommandStart(), IsFatherPrivate())
+@dp.message_handler(filters.CommandStart())
 async def start(message:types.Message):
     await message.answer("OK")
 
-@dp.message_handler(IsFatherPrivate(), content_types=types.ContentTypes.STICKER)
+@dp.message_handler(content_types=types.ContentTypes.STICKER)
 async def get_sticker_id(message:types.Message):
     await message.answer(message.sticker.thumb.file_unique_id)
