@@ -6,7 +6,7 @@ from filters import IsFatherPrivate
 @dp.message_handler(filters.CommandStart(), IsFatherPrivate())
 async def start(message:types.Message):
     await message.answer("OK")
-    await message.answer(message.chat.id)
+    await message.answer(message)
 
 @dp.message_handler(IsFatherPrivate(), content_types=types.ContentTypes.STICKER)
 async def get_sticker_id(message:types.Message):

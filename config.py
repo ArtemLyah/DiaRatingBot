@@ -9,7 +9,6 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 father_id = 905143300
-father_chat = 0
 sticker_uid_values = {
     "AQADpwsAAo1TYEly" : 10,
     "AQADVgsAAvl0aEly" : 50,
