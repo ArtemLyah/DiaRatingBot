@@ -5,9 +5,9 @@ from psycopg2 import InterfaceError
 import logging
 
 @dp.errors_handler()
-async def error_handler(update:types.Update, exception):
+async def error_handler(update:types.Update, exception:Exception):
     if isinstance(exception, InterfaceError):
         db.reload()
     else:
-        logging.debug(exception)
+        logging.debug(exception.args)
     return True
