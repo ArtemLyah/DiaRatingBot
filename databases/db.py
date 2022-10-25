@@ -29,11 +29,16 @@ class Group():
 
 class Database():
     def __init__(self, user, password, database, host="localhost") -> None:
+        self.db_settings = database_settings
         self.connection = pg.connect(**database_settings)
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
-
+    def reload(self):
+        self.connection = pg.connect(self.db_settings)
+        self.cursor = self.connection.cursor()
+        self.user = User(self)
+        self.group = Group(self)
     def get_top_by_rating(self, group_id):
         sql_get_top = f"SELECT user_id, rating FROM users_rating WHERE group_id='{group_id}'"
         self.cursor.execute(sql_get_top)
