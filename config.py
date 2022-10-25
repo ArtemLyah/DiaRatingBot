@@ -13,7 +13,12 @@ sticker_uid_values = {
     "AQADpwsAAo1TYEly" : 10,
     "AQADVgsAAvl0aEly" : 50,
     "AQAD6w8AApJ2YUly" : -10,
-    "AQAD8gsAAuATYUly" : -50
+    "AQAD8gsAAuATYUly" : -50,
+    "AQADaiEAArZdyUpy" : -50,
+    "AQADRhwAAm3zyUpy" : -10,
+    "AQADfCMAAqAuwUpy" : 10,
+    "AQADNiMAAh7AwEpy" : 50,
+    "AQADhSQAAl47wEpy" : -1000
 }
 
 database_settings = {
@@ -176,8 +181,7 @@ def status_text(rating):
             "Слава Україні!"
         ]
     )
-    elif -1000 < rating <= -700: return random.choice(
-        [
+    elif -1000 < rating <= -700: return random.choice([
             "Вас не любить Укрзалізниця!",
             "Арестович засудив Вас!",
             "Ви нагадуєте диверсанта, очікуйте гостей з ТрО Вашого міста!",
@@ -186,33 +190,26 @@ def status_text(rating):
             "Залужний Вас недолюблює!",
             "Вас буде прив'язано до стовпа і відлупцьовано вербою!",
             "Слава Україні!"
-        ]
-    )
-    elif -1488 < rating <= -1000: return random.choice(
-        [
+    ])
+    elif -1488 < rating <= -1000: return random.choice([
             "Очікуйте на бан! Надалі без коментарів",
             "Ви нас засмутили!",
             "В росії Вас оголосили героєм дрн і лнр!",
             "Біля Вашого входу стоять силовики!",
             "Відрахування!"
-        ]
-    )
-    elif -2000 < rating <= -1488: return random.choice(
-        [
+    ])
+    elif -2000 < rating <= -1488: return random.choice([
             "Ви порушили статтю 436-І ККУ очікуйте на патруль!",
             "В ООН планують ввести на Вас санкції!",
             "путін запрошує Вас до себе!",
             "Студенти КПІ Вас хейтять!"
-        ]
-    )
-    elif rating <= -2000: return random.choice(
-        [
+    ])
+    elif rating <= -2000: return random.choice([
             "До вас виїхали! Не намагайтеся чинити опір!",
             "Над вашою хатою літає Байрактар!",
             "Ми засуджуємо вас!",
             "Не рухайтесь! Снайпери самі все за вас зроблять!",
             "Вигляніть в вікно і не рухайтесь!"
             "вас оголошено ворогом України!"
-        ]
-    )
+    ])
     else: return "Ви нічого не заслужили"
