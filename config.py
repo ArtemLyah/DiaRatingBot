@@ -17,10 +17,10 @@ sticker_uid_values = {
 }
 
 database_settings = {
-    "host" : os.getenv("db_host"),
-    "user" : os.getenv("db_user"),
-    "password" : os.getenv("db_password"),
-    "database" : os.getenv("db_database")
+    "host" : os.getenv("db_h"),
+    "user" : os.getenv("db_u"),
+    "password" : os.getenv("db_pwd"),
+    "database" : os.getenv("db_db")
 }
 
 help_text = f"""Привіт я <b>{'Дія.Рейтинг'}</b> бот, я рахую рейтинг учасників в чаті.
