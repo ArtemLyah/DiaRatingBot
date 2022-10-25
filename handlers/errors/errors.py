@@ -1,7 +1,7 @@
-from dispatcher import dp, db
+from dispatcher import dp, db, bot
 from aiogram import types
-from aiogram.utils import exceptions
 from psycopg2 import InterfaceError
+from config import father_id
 import logging
 
 @dp.errors_handler()
@@ -9,5 +9,6 @@ async def error_handler(update:types.Update, exception:Exception):
     if isinstance(exception, InterfaceError):
         db.reload()
     else:
-        logging.debug(exception.args)
+        # bot.send_message()
+        logging.exception(str(exception))
     return True
