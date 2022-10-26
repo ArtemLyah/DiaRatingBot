@@ -18,7 +18,8 @@ sticker_uid_values = {
     "AQADRhwAAm3zyUpy" : -10,
     "AQADfCMAAqAuwUpy" : 10,
     "AQADNiMAAh7AwEpy" : 50,
-    "AQADhSQAAl47wEpy" : -1000
+    "AQADhSQAAl47wEpy" : -1000,
+    "AQADBR8AAjzJyEpy" : 5
 }
 
 database_settings = {
