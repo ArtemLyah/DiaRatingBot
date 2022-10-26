@@ -32,7 +32,7 @@ class Status():
     def __init__(self, db) -> None:
         self.db = db
     def get_rate(self, unique_file_id):
-        sql = f"SELECT rate FROM status_info WHERE unique_file_id={unique_file_id}"
+        sql = f"SELECT rate FROM status_info WHERE unique_file_id='{unique_file_id}'"
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
     def add_rate(self, unique_file_id, rate):
