@@ -1,6 +1,7 @@
 from aiogram import filters, types
 from dispatcher import dp, db
-from config import help_text, status_text
+from config import help_text
+from utils.status_text import status_text
 from filters import IsGroup, IsReplyDiaStickers
 
 # handle private messages
