@@ -16,7 +16,7 @@ class GetDBUserMiddleware(BaseMiddleware):
                     data["big_rate"] = rate
                 elif data["is_cheater"]:
                     data["is_cheater"] = rate > 0
-                print(data["is_cheater"])
+                
                 if data["is_cheater"]:
                     user_id = message.from_user.id
                     username = message.from_user.username,
