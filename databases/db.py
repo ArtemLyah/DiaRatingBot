@@ -32,12 +32,12 @@ class Status():
     def __init__(self, db) -> None:
         self.db = db
     def get_rate(self, unique_file_id):
-        sql = f"SELECT rate FROM status_info WHERE unique_file_id='{unique_file_id}'"
+        sql = f"SELECT rate FROM sticker_info WHERE unique_file_id='{unique_file_id}'"
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
     def add_rate(self, unique_file_id, rate):
-        sql_status_info = f"INSERT INTO status_info(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
-        self.db.cursor.execute(sql_status_info)
+        sql_sticker_info = f"INSERT INTO sticker_info(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
+        self.db.cursor.execute(sql_sticker_info)
         self.db.connection.commit()
         
 class Database():
