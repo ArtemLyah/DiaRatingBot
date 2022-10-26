@@ -48,11 +48,12 @@ class Database():
         self.user = User(self)
         self.group = Group(self)
         self.sticker_info = Sticker(self)
-    def reload(self):
+    def connect(self):
         self.connection = pg.connect(self.db_settings)
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
+        self.sticker_info = Sticker(self)
     def get_top_by_rating(self, group_id):
         sql_get_top = f"SELECT user_id, rating FROM users_rating WHERE group_id='{group_id}'"
         self.cursor.execute(sql_get_top)

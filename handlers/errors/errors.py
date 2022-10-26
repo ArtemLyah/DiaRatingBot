@@ -7,7 +7,7 @@ import logging
 @dp.errors_handler()
 async def error_handler(update:types.Update, exception:Exception):
     if isinstance(exception, InterfaceError):
-        db.reload()
+        db.connect()
     else:
         await bot.send_message(father_id, str(exception))
         logging.exception(str(exception))
