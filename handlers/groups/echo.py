@@ -8,6 +8,7 @@ from filters import IsGroup, IsReplyDiaStickers
 @dp.message_handler(filters.CommandStart(), IsGroup())
 async def start(message:types.Message):
     await message.answer(help_text)
+    db.group.add(message.chat.id, message.chat.username, message.chat.full_name)
 
 @dp.message_handler(filters.Command(["help"]), IsGroup())
 async def help(message:types.Message):

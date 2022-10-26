@@ -9,18 +9,18 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 father_id = 905143300
-sticker_uid_values = {
-    "AQADpwsAAo1TYEly" : 10,
-    "AQADVgsAAvl0aEly" : 50,
-    "AQAD6w8AApJ2YUly" : -10,
-    "AQAD8gsAAuATYUly" : -50,
-    "AQADaiEAArZdyUpy" : -50,
-    "AQADRhwAAm3zyUpy" : -10,
-    "AQADNiMAAh7AwEpy" : 10,
-    "AQADfCMAAqAuwUpy" : 50,
-    "AQADhSQAAl47wEpy" : -1000,
-    "AQADBR8AAjzJyEpy" : 5
-}
+# sticker_uid_values = {
+#     "AQADpwsAAo1TYEly" : 10,
+#     "AQADVgsAAvl0aEly" : 50,
+#     "AQAD6w8AApJ2YUly" : -10,
+#     "AQAD8gsAAuATYUly" : -50,
+#     "AQADaiEAArZdyUpy" : -50,
+#     "AQADRhwAAm3zyUpy" : -10,
+#     "AQADNiMAAh7AwEpy" : 10,
+#     "AQADfCMAAqAuwUpy" : 50,
+#     "AQADhSQAAl47wEpy" : -1000,
+#     "AQADBR8AAjzJyEpy" : 5
+# }
 
 database_settings = {
     "host" : os.getenv("db_h"),

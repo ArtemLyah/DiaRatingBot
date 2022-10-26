@@ -23,10 +23,23 @@ class Group():
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
     def add(self, id, username, name):
-        sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{id}', '{username}', '{name}')"
-        self.db.cursor.execute(sql_group_info)
-        self.db.connection.commit()
+        if not self.get_info(id):
+            sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{id}', '{username}', '{name}')"
+            self.db.cursor.execute(sql_group_info)
+            self.db.connection.commit()
 
+class Status():
+    def __init__(self, db) -> None:
+        self.db = db
+    def get_rate(self, unique_file_id):
+        sql = f"SELECT rate FROM status_info WHERE unique_file_id={unique_file_id}"
+        self.db.cursor.execute(sql)
+        return self.db.cursor.fetchone()
+    def add_rate(self, unique_file_id, rate):
+        sql_status_info = f"INSERT INTO status_info(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
+        self.db.cursor.execute(sql_status_info)
+        self.db.connection.commit()
+        
 class Database():
     def __init__(self, user, password, database, host="localhost") -> None:
         self.db_settings = database_settings
@@ -34,6 +47,7 @@ class Database():
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
+        self.status_info = Status(self)
     def reload(self):
         self.connection = pg.connect(self.db_settings)
         self.cursor = self.connection.cursor()
