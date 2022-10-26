@@ -17,7 +17,7 @@ async def help(message:types.Message):
 @dp.message_handler(filters.Command(["top"]), IsGroup())
 async def get_top(message:types.Message):
     toplist = db.get_top_by_rating(message.chat.id)
-    toplist = "\n".join([f"{i}. {value[0]} {value[1]} балів" for i, value in enumerate(toplist, 1)])
+    toplist = "\n".join([f"{i}. {value[0]} {value[1]} дія.балів" for i, value in enumerate(toplist, 1)])
     await message.answer("Топ учасників по Дія.Рейтингу:\n"+toplist+"\nВсі інші учасники ще не отримали бали")
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
