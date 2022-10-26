@@ -6,7 +6,7 @@ class GetDBUserMiddleware(BaseMiddleware):
     # name function on_process_ -> use needed handler (message_handler, callback_query_handler, ...)
     async def on_process_message(self, message:types.Message, data:dict):
         if message.reply_to_message and message.content_type == types.ContentType.STICKER:
-            rate = db.status_info.get_rate(message.sticker.thumb.file_unique_id)
+            rate = db.sticker_info.get_rate(message.sticker.thumb.file_unique_id)
             if rate:
                 rate = rate[0]
                 reply_message = message.reply_to_message

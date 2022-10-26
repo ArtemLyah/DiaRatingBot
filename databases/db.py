@@ -28,7 +28,7 @@ class Group():
             self.db.cursor.execute(sql_group_info)
             self.db.connection.commit()
 
-class Status():
+class Sticker():
     def __init__(self, db) -> None:
         self.db = db
     def get_rate(self, unique_file_id):
@@ -47,7 +47,7 @@ class Database():
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
-        self.status_info = Status(self)
+        self.sticker_info = Sticker(self)
     def reload(self):
         self.connection = pg.connect(self.db_settings)
         self.cursor = self.connection.cursor()

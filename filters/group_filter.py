@@ -11,4 +11,4 @@ class IsGroup(filters.BoundFilter):
 
 class IsReplyDiaStickers(filters.BoundFilter):
     async def check(self, message:types.Message) -> bool:
-        return message.reply_to_message and db.status_info.get_rate(message.sticker.thumb.file_unique_id)
+        return message.reply_to_message and db.sticker_info.get_rate(message.sticker.thumb.file_unique_id)
