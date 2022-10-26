@@ -29,10 +29,14 @@ async def my_rating(message:types.Message):
         await message.answer(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
 @dp.message_handler(IsReplyDiaStickers(), IsGroup(), content_types=types.ContentTypes.STICKER)
-async def increase_rating(message:types.Message, new_rating, is_cheater):
+async def increase_rating(message:types.Message, new_rating, is_cheater, big_rate=0):
     if is_cheater:
         await message.reply_sticker("CAACAgIAAx0CbprKMgACA0pjVXxR0_nkabtuQxJax8PXxLtIRwAC8gsAAuATYUnr_8GD-UUo9SoE")
-        await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався повисити свій рейтинг 👎")
+        if big_rate != 0:
+            await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався використати великі бали 👎")
+            await message.answer(f"Великі бали використовує тільки розробник боту!!!")
+        else:
+            await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався повисити свій рейтинг 👎")
         await message.answer(f"Рейтинг у чітера тепер становить {new_rating} балів\n"+status_text(new_rating))
     else:
         fullname = message.reply_to_message.from_user.full_name

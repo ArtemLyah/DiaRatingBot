@@ -1,6 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher.middlewares import BaseMiddleware
 from dispatcher import db
+from config import father_id
 
 class GetDBUserMiddleware(BaseMiddleware):
     # name function on_process_ -> use needed handler (message_handler, callback_query_handler, ...)
@@ -9,31 +10,36 @@ class GetDBUserMiddleware(BaseMiddleware):
             rate = db.sticker_info.get_rate(message.sticker.thumb.file_unique_id)
             if rate:
                 rate = rate[0]
-                reply_message = message.reply_to_message
-                user = db.user.get_info(reply_message.from_user.id)
-                if not user:
+                if rate >= 1000 or rate <= -1000:
+                    data["is_cheater"] = message.from_user.id != father_id
+                    data["big_rate"] = rate
+                else:
+                    data["is_cheater"] = message.from_user.id == message.reply_to_message.from_user.id and rate > 0
+                
+                if data["is_cheater"]:
+                    user_id = message.from_user.id
+                    username = message.from_user.username,
+                    fullname = message.from_user.full_name
+                    rate = -50
+                else:
+                    reply_message = message.reply_to_message
+                    user_id = reply_message.from_user.id
+                    username = reply_message.from_user.username,
+                    fullname = reply_message.from_user.full_name
+
+                if not db.user.get_info(user_id):
                     db.user.add(
                         group_id=message.chat.id,
-                        id=reply_message.from_user.id,
-                        username=reply_message.from_user.username,
-                        fullname=reply_message.from_user.full_name,
+                        id=user_id,
+                        username=username,
+                        fullname=fullname,
+                    )
+                if not db.get_rating(message.chat.id, user_id):
+                    db.add_rating(message.chat.id, user_id)
+                data["new_rating"] = db.set_rating(
+                    group_id=message.chat.id,
+                    user_id=user_id,  
+                    rating=rate
                 )
-                if not db.get_rating(message.chat.id, reply_message.from_user.id):
-                    db.add_rating(message.chat.id, reply_message.from_user.id)
-
-                data["is_cheater"] = message.from_user.id == reply_message.from_user.id and rate > 0
-                if not data["is_cheater"]:
-                    data["new_rating"] = db.set_rating(
-                        user_id=reply_message.from_user.id,
-                        group_id=message.chat.id,
-                        rating=rate
-                    )
-                else:
-                    data["new_rating"] = db.set_rating(
-                        user_id=reply_message.from_user.id,
-                        group_id=message.chat.id,
-                        rating=-50
-                    )
-                
     async def on_process_callback_query(self, query:types.CallbackQuery, data:dict):
         pass
