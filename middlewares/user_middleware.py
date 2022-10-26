@@ -8,6 +8,7 @@ class GetDBUserMiddleware(BaseMiddleware):
         if message.reply_to_message and message.content_type == types.ContentType.STICKER:
             rate = db.status_info.get_rate(message.sticker.thumb.file_unique_id)
             if rate:
+                rate = rate[0]
                 reply_message = message.reply_to_message
                 user = db.user.get_info(reply_message.from_user.id)
                 if not user:
