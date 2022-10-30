@@ -14,8 +14,8 @@ class GetDBUserMiddleware(BaseMiddleware):
                 # if not data["is_cheater"] and (rate >= 1000 or rate <= -1000):
                 #     data["is_cheater"] = message.from_user.id != father_id
                 #     data["big_rate"] = rate
-                # elif data["is_cheater"]:
-                #     data["is_cheater"] = rate > 0
+                if data["is_cheater"]:
+                    data["is_cheater"] = rate > 0
                 
                 if data["is_cheater"]:
                     user_id = message.from_user.id
