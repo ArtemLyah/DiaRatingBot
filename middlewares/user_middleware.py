@@ -9,7 +9,7 @@ class GetDBUserMiddleware(BaseMiddleware):
         if message.reply_to_message and message.content_type == types.ContentType.STICKER:
             rate = db.sticker_info.get_rate(message.sticker.thumb.file_unique_id)
             if rate:
-                # rate = rate[0]
+                rate = rate[0]
                 data["is_cheater"] = message.from_user.id == message.reply_to_message.from_user.id
                 # if not data["is_cheater"] and (rate >= 1000 or rate <= -1000):
                 #     data["is_cheater"] = message.from_user.id != father_id
