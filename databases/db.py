@@ -43,11 +43,7 @@ class Sticker():
 class Database():
     def __init__(self, user, password, database, host="localhost") -> None:
         self.db_settings = database_settings
-        self.connection = pg.connect(**database_settings)
-        self.cursor = self.connection.cursor()
-        self.user = User(self)
-        self.group = Group(self)
-        self.sticker_info = Sticker(self)
+        self.connect()
     def connect(self):
         self.connection = pg.connect(**self.db_settings)
         self.cursor = self.connection.cursor()
