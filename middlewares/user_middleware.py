@@ -19,13 +19,13 @@ class GetDBUserMiddleware(BaseMiddleware):
                 
                 if data["is_cheater"]:
                     user_id = message.from_user.id
-                    username = message.from_user.username,
+                    username = message.from_user.username
                     fullname = message.from_user.full_name
                     rate = -50
                 else:
                     reply_message = message.reply_to_message
                     user_id = reply_message.from_user.id
-                    username = reply_message.from_user.username,
+                    username = reply_message.from_user.username
                     fullname = reply_message.from_user.full_name
                 print(username)
                 if not db.user.get_info(user_id):
