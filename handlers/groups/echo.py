@@ -28,9 +28,9 @@ async def my_rating(message:types.Message):
     else:
         await message.answer(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
-@dp.message_handler(IsGroup(), IsFather(), filters.Command(["ban_rating"]))
+@dp.message_handler(IsGroup(), IsFather(), filters.Command(["dia_ban"]))
 async def ban_rating(message:types.Message):
-    user_info = db.get_rating(message.chat.id, message.from_user.id)
+    user_info = db.user.get_info(message.from_user.id)
     reply_message = message.reply_to_message
     if not user_info:
         db.user.add(message.chat.id, reply_message.from_user.id, reply_message.from_user.username, reply_message.from_user.full_name)
