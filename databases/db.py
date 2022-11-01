@@ -49,7 +49,7 @@ class Database():
         self.group = Group(self)
         self.sticker_info = Sticker(self)
     def connect(self):
-        self.connection = pg.connect(self.db_settings)
+        self.connection = pg.connect(**self.db_settings)
         self.cursor = self.connection.cursor()
         self.user = User(self)
         self.group = Group(self)
