@@ -34,8 +34,8 @@ async def ban_rating(message:types.Message):
     reply_message = message.reply_to_message
     if not user_info:
         db.user.add(message.chat.id, reply_message.from_user.id, reply_message.from_user.username, reply_message.from_user.full_name)
-    db.set_rating(message.chat.id, message.from_user.id, -1000000)
-    await message.answer(f"{message.from_user.full_name} було забанено!!! Слава Україні!")
+    db.set_rating(message.chat.id, reply_message.from_user.id, -1000000)
+    await message.answer(f"{reply_message.from_user.full_name} було забанено!!! Слава Україні!")
 
 @dp.message_handler(IsReplyDiaStickers(), IsGroup(), content_types=types.ContentTypes.STICKER)
 async def increase_rating(message:types.Message, new_rating, is_cheater, big_rate=0):
