@@ -12,5 +12,5 @@ async def error_handler(update:types.Update, exception:Exception):
         await bot.send_message(father_id, "Reconnecting has done")
     else:
         await bot.send_message(father_id, str(exception))
-        logging.exception(str(exception))
+        logging.exception(exception)
     return True
