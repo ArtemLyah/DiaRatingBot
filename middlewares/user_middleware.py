@@ -27,7 +27,6 @@ class GetDBUserMiddleware(BaseMiddleware):
                     user_id = reply_message.from_user.id
                     username = reply_message.from_user.username
                     fullname = reply_message.from_user.full_name
-                print(username)
                 if not db.user.get_info(user_id):
                     db.user.add(
                         group_id=message.chat.id,
