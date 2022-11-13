@@ -26,14 +26,13 @@ async def get_top(message:types.Message):
 
             if j >= len(toplist):
                 break
-            if j == 0: emoji = "🏆"
-            if j == 1: emoji = "🥇"
-            if j == 2: emoji = "🥈"
-            if j == 3: emoji = "🥉"
+            if j == 0: emoji = "🥇"
+            if j == 1: emoji = "🥈"
+            if j == 2: emoji = "🥉"
 
             toplist_text += text_template.format(index=j+1, emoji=emoji, name=toplist[j][0], rate=toplist[j][1])
         toplist_text += "\n"
-        
+
     toplist_text += "Всі інші учаники ще не отримали дія.балів."
     await message.answer(toplist_text)
 
