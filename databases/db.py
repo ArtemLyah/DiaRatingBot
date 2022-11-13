@@ -27,7 +27,7 @@ class Group():
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
     def add(self, user_id, username, name):
-        if not self.get_info(id):
+        if not self.get_info(user_id):
             sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{user_id}', '{username}', '{name}')"
             self.db.cursor.execute(sql_group_info)
             self.db.connection.commit()
