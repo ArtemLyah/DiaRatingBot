@@ -15,7 +15,7 @@ class User():
         self.db.cursor.execute(sql_relations)
         self.db.connection.commit()
     def remove_rating(self, user_id, group_id):
-        sql_delete = f"DELETE FROM users_rating WHERE user_id = '{user_id}', group_id='{group_id}'"
+        sql_delete = f"DELETE FROM users_rating WHERE user_id = '{user_id}' AND group_id='{group_id}'"
         self.db.cursor.execute(sql_delete)
         self.db.connection.commit()
 class Group():
