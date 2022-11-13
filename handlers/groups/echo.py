@@ -24,7 +24,7 @@ async def get_top(message:types.Message):
         for j in range(i*10, (i+1)*10):
             if j >= len(toplist):
                 break
-            toplist_text += f"{j}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
+            toplist_text += f"{j+1}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
         await message.answer(toplist_text)
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
