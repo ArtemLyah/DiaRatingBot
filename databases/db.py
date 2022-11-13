@@ -9,9 +9,9 @@ class User():
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
     def add(self, group_id, user_id, username, fullname):
-        sql_user_info = f"INSERT INTO users_info(id, username, fullname) VALUES('{id}', '{username}', '{fullname}')"
+        sql_user_info = f"INSERT INTO users_info(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
         self.db.cursor.execute(sql_user_info)
-        sql_relations = f"INSERT INTO users_rating(user_id, group_id) VALUES('{id}', '{group_id}')"
+        sql_relations = f"INSERT INTO users_rating(user_id, group_id) VALUES('{user_id}', '{group_id}')"
         self.db.cursor.execute(sql_relations)
         self.db.connection.commit()
     def remove_rating(self, user_id, group_id):
@@ -45,7 +45,7 @@ class Sticker():
         self.db.connection.commit()
         
 class Database():
-    def __init__(self, user, password, database, host="localhost") -> None:
+    def __init__(self) -> None:
         self.db_settings = database_settings
         self.connect()
     def connect(self):
