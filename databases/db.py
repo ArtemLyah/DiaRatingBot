@@ -18,6 +18,7 @@ class User():
         sql_delete = f"DELETE FROM users_rating WHERE user_id = '{user_id}' AND group_id='{group_id}'"
         self.db.cursor.execute(sql_delete)
         self.db.connection.commit()
+
 class Group():
     def __init__(self, db) -> None:
         self.db = db
@@ -30,7 +31,6 @@ class Group():
             sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{user_id}', '{username}', '{name}')"
             self.db.cursor.execute(sql_group_info)
             self.db.connection.commit()
-
 
 class Sticker():
     def __init__(self, db) -> None:

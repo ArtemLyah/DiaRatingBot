@@ -3,6 +3,7 @@ from dispatcher import dp, db
 from config import help_text
 from utils.status_text import status_text
 from filters import IsGroup, IsReplyDiaStickers, IsFather
+import math
 
 # handle private messages
 @dp.message_handler(filters.CommandStart(), IsGroup())
@@ -17,8 +18,15 @@ async def help(message:types.Message):
 @dp.message_handler(filters.Command(["top"]), IsGroup())
 async def get_top(message:types.Message):
     toplist = db.get_top_by_rating(message.chat.id)
-    toplist = "\n".join([f"{i}. <b>{value[0]}</b>: {value[1]} дія.балів" for i, value in enumerate(toplist, 1)])
-    await message.answer("Топ учасників по Дія.Рейтингу:\n"+toplist+"\nВсі інші учасники ще не отримали бали")
+    await message.answer("Топ учасників по Дія.Рейтингу:")
+    for i in range(math.ceil(len(toplist)/10)):
+        toplist_text = "" 
+        for j in range(i*10, (i+1)*10):
+            if j >= len(toplist):
+                break
+            toplist_text += f"{i}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
+    
+        await message.answer(toplist_text)
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
 async def my_rating(message:types.Message):
