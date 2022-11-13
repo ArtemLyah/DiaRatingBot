@@ -25,6 +25,7 @@ async def get_top(message:types.Message):
                 break
             toplist_text += f"{j+1}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
         toplist_text += "\n"
+    toplist_text += "Всі інші учаники ще не отримали дія.балів."
     await message.answer(toplist_text)
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
@@ -60,6 +61,6 @@ async def increase_rating(message:types.Message, new_rating, is_cheater, big_rat
         await message.answer(f"{message.sticker.emoji} Рейтинг у {fullname} тепер становить {new_rating} балів {message.sticker.emoji}\n"+status_text(new_rating))
 
 @dp.message_handler(IsGroup(), content_types=[types.ContentType.LEFT_CHAT_MEMBER])
-async def user_left(message:types.Message, left_chat_member:types.User):
-    if left_chat_member:
-        await message.answer(f"Дія.Рейтинг у {left_chat_member.full_name} обнулився!")
+async def user_left(message:types.Message):
+    db.user.remove_rating(message.left_chat_member.id, message.chat.id)
+    await message.answer(f"Дія.Рейтинг у {message.left_chat_member.full_name} обнулився!")

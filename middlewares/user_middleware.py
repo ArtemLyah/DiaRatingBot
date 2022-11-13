@@ -41,8 +41,5 @@ class GetDBUserMiddleware(BaseMiddleware):
                     user_id=user_id,  
                     rating=rate
                 )
-        elif message.content_type == types.ContentType.LEFT_CHAT_MEMBER:
-            db.user.remove_rating(message.left_chat_member.id, message.chat.id)
-            data["left_chat_member"] = message.left_chat_member
     async def on_process_callback_query(self, query:types.CallbackQuery, data:dict):
         pass
