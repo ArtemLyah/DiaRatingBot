@@ -18,14 +18,14 @@ async def help(message:types.Message):
 @dp.message_handler(filters.Command(["top"]), IsGroup())
 async def get_top(message:types.Message):
     toplist = db.get_top_by_rating(message.chat.id)
-    await message.answer("Топ учасників по Дія.Рейтингу:")
+    toplist_text = "Топ учасників по Дія.Рейтингу:\n"
     for i in range(math.ceil(len(toplist)/10)):
-        toplist_text = "" 
         for j in range(i*10, (i+1)*10):
             if j >= len(toplist):
                 break
             toplist_text += f"{j+1}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
-        await message.answer(toplist_text)
+        toplist_text += "\n"
+    await message.answer(toplist_text)
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
 async def my_rating(message:types.Message):
