@@ -21,10 +21,19 @@ async def get_top(message:types.Message):
     toplist_text = "Топ учасників по Дія.Рейтингу:\n"
     for i in range(math.ceil(len(toplist)/10)):
         for j in range(i*10, (i+1)*10):
+            text_template = "{index}. {emoji}<b>{name}</b>: {rate} дія.балів\n"
+            emoji = ""
+
             if j >= len(toplist):
                 break
-            toplist_text += f"{j+1}. <b>{toplist[j][0]}</b>: {toplist[j][1]} дія.балів\n"
+            if j == 0: emoji = "🏆"
+            if j == 1: emoji = "🥇"
+            if j == 2: emoji = "🥈"
+            if j == 3: emoji = "🥉"
+
+            toplist_text += text_template.format(index=j+1, emoji=emoji, name=toplist[j][0], rate=toplist[j][1])
         toplist_text += "\n"
+        
     toplist_text += "Всі інші учаники ще не отримали дія.балів."
     await message.answer(toplist_text)
 
