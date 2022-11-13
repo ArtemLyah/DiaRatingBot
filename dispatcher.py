@@ -9,8 +9,4 @@ storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
 
-db = Database(
-    user="postgres",
-    password="postgres",
-    database="diarating"
-)
+db = Database()
