@@ -8,7 +8,7 @@ class User():
         sql = f"SELECT id, username, fullname FROM users_info WHERE id='{id}'"
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
-    def add(self, group_id, id, username, fullname):
+    def add(self, group_id, user_id, username, fullname):
         sql_user_info = f"INSERT INTO users_info(id, username, fullname) VALUES('{id}', '{username}', '{fullname}')"
         self.db.cursor.execute(sql_user_info)
         sql_relations = f"INSERT INTO users_rating(user_id, group_id) VALUES('{id}', '{group_id}')"
