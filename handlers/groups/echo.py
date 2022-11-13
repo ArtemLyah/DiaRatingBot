@@ -24,9 +24,9 @@ async def get_top(message:types.Message):
 async def my_rating(message:types.Message):
     user_info = db.get_rating(message.chat.id, message.from_user.id)
     if user_info:
-        await message.answer(f"Твій рейтинг становить: {user_info[0]} балів\n"+status_text(user_info[0]))
+        await message.reply(f"Твій рейтинг становить: {user_info[0]} балів\n"+status_text(user_info[0]))
     else:
-        await message.answer(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
+        await message.reply(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
 @dp.message_handler(IsGroup(), IsFather(), filters.Command(["dia_ban"]))
 async def ban_rating(message:types.Message):
@@ -35,8 +35,8 @@ async def ban_rating(message:types.Message):
     if not user_info:
         db.user.add(message.chat.id, reply_message.from_user.id, reply_message.from_user.username, reply_message.from_user.full_name)
     new_rating = db.set_rating(message.chat.id, reply_message.from_user.id, -1000000)
-    await message.answer(f"{reply_message.from_user.full_name} було забанено!!! Слава Україні!")
-    await message.answer(f"Ваш рейтинг тепер становить {new_rating}!")
+    await message.answer(f"{reply_message.from_user.full_name} було тотально знищено!!! Слава Україні!")
+    await message.answer(f"Рейтинг у {reply_message.from_user.full_name} тепер становить {new_rating}!")
 
 @dp.message_handler(IsReplyDiaStickers(), IsGroup(), content_types=types.ContentTypes.STICKER)
 async def increase_rating(message:types.Message, new_rating, is_cheater, big_rate=0):
@@ -51,3 +51,8 @@ async def increase_rating(message:types.Message, new_rating, is_cheater, big_rat
     else:
         fullname = message.reply_to_message.from_user.full_name
         await message.answer(f"{message.sticker.emoji} Рейтинг у {fullname} тепер становить {new_rating} балів {message.sticker.emoji}\n"+status_text(new_rating))
+
+@dp.message_handler(IsGroup(), content_types=[types.ContentType.LEFT_CHAT_MEMBER])
+async def user_left(message:types.Message, left_chat_member:types.User):
+    if left_chat_member:
+        await message.answer(f"Дія.Рейтинг у {left_chat_member.full_name} обнулився!")

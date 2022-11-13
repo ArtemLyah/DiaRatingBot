@@ -30,7 +30,7 @@ class GetDBUserMiddleware(BaseMiddleware):
                 if not db.user.get_info(user_id):
                     db.user.add(
                         group_id=message.chat.id,
-                        id=user_id,
+                        user_id=user_id,
                         username=username,
                         fullname=fullname,
                     )
@@ -41,5 +41,8 @@ class GetDBUserMiddleware(BaseMiddleware):
                     user_id=user_id,  
                     rating=rate
                 )
+        elif message.content_type == types.ContentType.LEFT_CHAT_MEMBER:
+            db.user.remove_rating(message.left_chat_member.id, message.chat.id)
+            data["left_chat_member"] = message.left_chat_member
     async def on_process_callback_query(self, query:types.CallbackQuery, data:dict):
         pass

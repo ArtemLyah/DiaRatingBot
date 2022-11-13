@@ -14,7 +14,10 @@ class User():
         sql_relations = f"INSERT INTO users_rating(user_id, group_id) VALUES('{id}', '{group_id}')"
         self.db.cursor.execute(sql_relations)
         self.db.connection.commit()
-    
+    def remove_rating(self, user_id, group_id):
+        sql_delete = f"DELETE FROM users_rating WHERE user_id = '{user_id}', group_id='{group_id}'"
+        self.db.cursor.execute(sql_delete)
+        self.db.connection.commit()
 class Group():
     def __init__(self, db) -> None:
         self.db = db
@@ -22,11 +25,12 @@ class Group():
         sql = f"SELECT * FROM groups_info WHERE id='{id}'"
         self.db.cursor.execute(sql)
         return self.db.cursor.fetchone()
-    def add(self, id, username, name):
+    def add(self, user_id, username, name):
         if not self.get_info(id):
-            sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{id}', '{username}', '{name}')"
+            sql_group_info = f"INSERT INTO groups_info(id, username, name) VALUES('{user_id}', '{username}', '{name}')"
             self.db.cursor.execute(sql_group_info)
             self.db.connection.commit()
+
 
 class Sticker():
     def __init__(self, db) -> None:
