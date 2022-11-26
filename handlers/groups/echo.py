@@ -1,40 +1,22 @@
 from aiogram import filters, types
 from dispatcher import dp, db
-from config import help_text
-from utils.status_text import status_text
+from utils.message_texts import status_text, format_toplist, help
 from filters import IsGroup, IsReplyDiaStickers, IsFather
-import math
 
 # handle private messages
 @dp.message_handler(filters.CommandStart(), IsGroup())
 async def start(message:types.Message):
-    await message.answer(help_text)
+    await message.answer(help)
     db.group.add(message.chat.id, message.chat.username, message.chat.full_name)
 
 @dp.message_handler(filters.Command(["help"]), IsGroup())
 async def help(message:types.Message):
-    await message.answer(help_text)
+    await message.answer(help)
 
 @dp.message_handler(filters.Command(["top"]), IsGroup())
 async def get_top(message:types.Message):
     toplist = db.get_top_by_rating(message.chat.id)
-    toplist_text = "Топ учасників по Дія.Рейтингу:\n"
-    for i in range(math.ceil(len(toplist)/10)):
-        for j in range(i*10, (i+1)*10):
-            text_template = "{index}. {emoji}<b>{name}</b>: {rate} дія.балів\n"
-            emoji = ""
-
-            if j >= len(toplist):
-                break
-            if j == 0: emoji = "🥇"
-            if j == 1: emoji = "🥈"
-            if j == 2: emoji = "🥉"
-
-            toplist_text += text_template.format(index=j+1, emoji=emoji, name=toplist[j][0], rate=toplist[j][1])
-        toplist_text += "\n"
-
-    toplist_text += "Всі інші учаники ще не отримали дія.балів."
-    await message.answer(toplist_text)
+    await message.answer(format_toplist(toplist))
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
 async def my_rating(message:types.Message):
@@ -45,23 +27,14 @@ async def my_rating(message:types.Message):
         await message.reply(f"Ти ще не отримав/ла бали, тому твій рейтинг становить 0 балів")
 
 @dp.message_handler(IsGroup(), IsFather(), filters.Command(["dia_ban"]))
-async def ban_rating(message:types.Message):
-    user_info = db.user.get_info(message.from_user.id)
-    reply_message = message.reply_to_message
-    if not user_info:
-        db.user.add(message.chat.id, reply_message.from_user.id, reply_message.from_user.username, reply_message.from_user.full_name)
-    new_rating = db.set_rating(message.chat.id, reply_message.from_user.id, -1000000)
-    await message.answer(f"{reply_message.from_user.full_name} було тотально знищено!!! Слава Україні!")
-    await message.answer(f"Рейтинг у {reply_message.from_user.full_name} тепер становить {new_rating}!")
+async def ban_rating(message:types.Message, new_rating=0):
+    await message.answer(f"{message.reply_to_message.from_user.full_name} було тотально знищено!!! Слава Україні!")
+    await message.answer(f"Рейтинг у {message.reply_to_message.from_user.full_name} тепер становить {new_rating}!")
 
 @dp.message_handler(IsReplyDiaStickers(), IsGroup(), content_types=types.ContentTypes.STICKER)
-async def increase_rating(message:types.Message, new_rating, is_cheater, big_rate=0):
+async def increase_rating(message:types.Message, new_rating, is_cheater):
     if is_cheater:
         await message.reply_sticker("CAACAgIAAx0CbprKMgACA0pjVXxR0_nkabtuQxJax8PXxLtIRwAC8gsAAuATYUnr_8GD-UUo9SoE")
-        # if big_rate != 0:
-        #     await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався використати великі бали 👎")
-        #     await message.answer(f"Великі бали використовує тільки розробник боту!!!")
-        # else:
         await message.reply(f"👎 {message.from_user.full_name} - чітер, який намагався повисити свій рейтинг 👎")
         await message.answer(f"Рейтинг у чітера тепер становить {new_rating} балів\n"+status_text(new_rating))
     else:

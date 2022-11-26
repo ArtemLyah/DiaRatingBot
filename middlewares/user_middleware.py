@@ -11,9 +11,6 @@ class GetDBUserMiddleware(BaseMiddleware):
             if rate:
                 rate = rate[0]
                 data["is_cheater"] = message.from_user.id == message.reply_to_message.from_user.id
-                # if not data["is_cheater"] and (rate >= 1000 or rate <= -1000):
-                #     data["is_cheater"] = message.from_user.id != father_id
-                #     data["big_rate"] = rate
                 if data["is_cheater"]:
                     data["is_cheater"] = rate > 0
                 
@@ -41,5 +38,17 @@ class GetDBUserMiddleware(BaseMiddleware):
                     user_id=user_id,  
                     rating=rate
                 )
+            elif message.from_user.id == father_id and message.text == "/dia_ban":
+                reply_message = message.reply_to_message
+                user_info = db.user.get_info(reply_message.from_user.id)
+                if not user_info:
+                    db.user.add(
+                        message.chat.id, 
+                        reply_message.from_user.id, 
+                        reply_message.from_user.username, 
+                        reply_message.from_user.full_name
+                    )
+                new_rating = db.set_rating(message.chat.id, reply_message.from_user.id, -1000000)
+                data["new_rating"] = new_rating
     async def on_process_callback_query(self, query:types.CallbackQuery, data:dict):
         pass

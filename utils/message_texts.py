@@ -1,4 +1,36 @@
 import random
+import math
+from aiogram.utils.markdown import hlink
+
+help = f"""Привіт я <b>{'Дія.Рейтинг'}</b> бот, я рахую рейтинг учасників в чаті.
+
+Щоб повисити/понизити рейтинг учасника зроби на його повідомлення (reply) і вибери з {hlink('стікерпаку', 'https://t.me/addstickers/DiiaRating')} Дії бал на який ти хочеш оцінити свого співрозмовника.
+
+Доступні команди:
+/help — Правила користування ботом
+/top — Вивести топ всіх учасників по рейтингу
+/rating — Вивести свій рейтинг
+
+Я працюю в будь-яких групах, тому ти можеш добавити мене кудись ще"""
+
+def format_toplist(toplist):
+    toplist_text = "Топ учасників по Дія.Рейтингу:\n"
+    for i in range(math.ceil(len(toplist)/10)):
+        for j in range(i*10, (i+1)*10):
+            text_template = "{index}. {emoji}<b>{name}</b>: {rate} дія.балів\n"
+            emoji = ""
+
+            if j >= len(toplist):
+                break
+            if j == 0: emoji = "🥇"
+            if j == 1: emoji = "🥈"
+            if j == 2: emoji = "🥉"
+
+            toplist_text += text_template.format(index=j+1, emoji=emoji, name=toplist[j][0], rate=toplist[j][1])
+        toplist_text += "\n"
+        toplist_text += "Всі інші учаники ще не отримали дія.балів."
+    return toplist
+
 def status_text(rating):
     if 10 <= rating < 50: return random.choice([
         "Додаткова миска борщу гарантована!",
