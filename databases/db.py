@@ -53,7 +53,7 @@ class Database():
         toplist = []
         for user_rating in self.connector.execute(sql_get_top).fetchall():
             user_id = user_rating[0]
-            _, _, fullname = self.user.get_info(user_id)
+            _, _, fullname = self.users.get_info(user_id)
             toplist.append([fullname, user_rating[1]])
         return sorted(toplist, key=lambda l: l[1], reverse=True)
     def get_rating(self, group_id, user_id):
