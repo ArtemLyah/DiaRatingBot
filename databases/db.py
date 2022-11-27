@@ -44,14 +44,7 @@ class Sticker():
 class Database():
     def __init__(self) -> None:
         self.db_settings = database_settings
-        self.url = sa.engine.url.URL.create(**database_settings,
-            drivername="postgresql+psycopg2",
-            username="postgres",
-            password=")~l,ABj_X@t+ZaY)",
-            host="34.79.229.60",
-            port=5432,
-            database="diarating",
-        )
+        self.url = sa.engine.url.URL.create(**database_settings)
         self.connect()
     def connect(self):
         pool = sa.create_engine(self.url)
