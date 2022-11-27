@@ -48,7 +48,7 @@ class Database():
         self.connect()
     def connect(self):
         pool = sa.create_engine(self.url)
-        self.connector = pool.connect(**self.db_settings)
+        self.connector = pool.connect()
         self.user = User(self)
         self.group = Group(self)
         self.sticker_info = Sticker(self)
