@@ -28,6 +28,8 @@ async def my_rating(message:types.Message):
 
 @dp.message_handler(IsGroup(), IsFather(), filters.Command(["dia_ban"]))
 async def ban_rating(message:types.Message, new_rating=0):
+    if not message.reply_to_message:
+        return
     await message.answer(f"{message.reply_to_message.from_user.full_name} було тотально знищено!!! Слава Україні!")
     await message.answer(f"Рейтинг у {message.reply_to_message.from_user.full_name} тепер становить {new_rating}!")
 
