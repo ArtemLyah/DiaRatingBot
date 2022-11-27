@@ -28,7 +28,7 @@ def format_toplist(toplist):
 
             toplist_text += text_template.format(index=j+1, emoji=emoji, name=toplist[j][0], rate=toplist[j][1])
         toplist_text += "\n"
-        toplist_text += "Всі інші учаники ще не отримали дія.балів."
+    toplist_text += "Всі інші учаники ще не отримали дія.балів."
     return toplist_text
 
 def status_text(rating):
