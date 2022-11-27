@@ -7,7 +7,7 @@ class GetDBUserMiddleware(BaseMiddleware):
     # name function on_process_ -> use needed handler (message_handler, callback_query_handler, ...)
     async def on_process_message(self, message:types.Message, data:dict):
         if message.reply_to_message and message.content_type == types.ContentType.STICKER:
-            rate = db.sticker_info.get_rate(message.sticker.thumb.file_unique_id)
+            rate = db.stickers.get_rate(message.sticker.thumb.file_unique_id)
             if rate:
                 rate = rate[0]
                 data["is_cheater"] = message.from_user.id == message.reply_to_message.from_user.id
@@ -24,8 +24,8 @@ class GetDBUserMiddleware(BaseMiddleware):
                     user_id = reply_message.from_user.id
                     username = reply_message.from_user.username
                     fullname = reply_message.from_user.full_name
-                if not db.user.get_info(user_id):
-                    db.user.add(
+                if not db.users.get_info(user_id):
+                    db.users.add(
                         group_id=message.chat.id,
                         user_id=user_id,
                         username=username,
@@ -42,9 +42,9 @@ class GetDBUserMiddleware(BaseMiddleware):
             reply_message = message.reply_to_message
             if not reply_message:
                 return
-            user_info = db.user.get_info(reply_message.from_user.id)
+            user_info = db.users.get_info(reply_message.from_user.id)
             if not user_info:
-                db.user.add(
+                db.users.add(
                     message.chat.id, 
                     reply_message.from_user.id, 
                     reply_message.from_user.username, 

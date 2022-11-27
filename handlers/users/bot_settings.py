@@ -27,6 +27,6 @@ async def add_sticker(message:types.Message, state:FSMContext):
 @dp.message_handler(IsPrivate(), IsFather(), state=AddSticker_State.add_rate)
 async def add_rate(message:types.Message, state:FSMContext):
     unique_file_id = (await state.get_data())["unique_file_id"]
-    db.sticker_info.add_rate(unique_file_id, int(message.text))
+    db.stickers.add_rate(unique_file_id, int(message.text))
     await message.answer("Well done")
     await state.finish()

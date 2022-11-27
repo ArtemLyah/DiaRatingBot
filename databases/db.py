@@ -12,11 +12,9 @@ class User():
         self.db.connector.execute(sql_user_info)
         sql_relations = f"INSERT INTO ratings(user_id, group_id) VALUES('{user_id}', '{group_id}')"
         self.db.connector.execute(sql_relations)
-        self.db.connector.commit()
     def remove_rating(self, user_id, group_id):
         sql_delete = f"DELETE FROM ratings WHERE user_id = '{user_id}' AND group_id='{group_id}'"
         self.db.connector.execute(sql_delete)
-        self.db.connector.commit()
 
 class Group():
     def __init__(self, db) -> None:
@@ -28,7 +26,6 @@ class Group():
         if not self.get_info(user_id):
             sql_group_info = f"INSERT INTO groups(id, username, name) VALUES('{user_id}', '{username}', '{name}')"
             self.db.connector.execute(sql_group_info)
-            self.db.connector.commit()
 
 class Sticker():
     def __init__(self, db) -> None:
@@ -39,7 +36,6 @@ class Sticker():
     def add_rate(self, unique_file_id, rate):
         sql_stickers = f"INSERT INTO stickers(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
         self.db.connector.execute(sql_stickers)
-        self.db.connector.commit()
         
 class Database():
     def __init__(self) -> None:
@@ -49,8 +45,8 @@ class Database():
     def connect(self):
         pool = sa.create_engine(self.url)
         self.connector = pool.connect()
-        self.user = User(self)
-        self.group = Group(self)
+        self.users = User(self)
+        self.groups = Group(self)
         self.stickers = Sticker(self)
     def get_top_by_rating(self, group_id):
         sql_get_top = f"SELECT user_id, rating FROM ratings WHERE group_id='{group_id}'"
@@ -66,11 +62,9 @@ class Database():
     def add_rating(self, group_id, user_id, rating=0):
         sql_relations = f"INSERT INTO ratings(user_id, group_id, rating) VALUES('{user_id}', '{group_id}', {rating})"
         self.connector.execute(sql_relations)
-        self.connector.commit()
     def set_rating(self, group_id, user_id, rating):
         current_rating = self.get_rating(group_id, user_id)[0]
         sql_update_rating = f"UPDATE ratings SET rating={current_rating+rating} WHERE user_id='{user_id}' AND group_id='{group_id}'"
         self.connector.execute(sql_update_rating)
-        self.connector.commit()
         return current_rating+rating
     

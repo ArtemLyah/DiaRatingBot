@@ -7,7 +7,7 @@ from filters import IsGroup, IsReplyDiaStickers, IsFather
 @dp.message_handler(filters.CommandStart(), IsGroup())
 async def start(message:types.Message):
     await message.answer(help)
-    db.group.add(message.chat.id, message.chat.username, message.chat.full_name)
+    db.groups.add(message.chat.id, message.chat.username, message.chat.full_name)
 
 @dp.message_handler(filters.Command(["help"]), IsGroup())
 async def help(message:types.Message):
@@ -45,5 +45,5 @@ async def increase_rating(message:types.Message, new_rating, is_cheater):
 
 @dp.message_handler(IsGroup(), content_types=[types.ContentType.LEFT_CHAT_MEMBER])
 async def user_left(message:types.Message):
-    db.user.remove_rating(message.left_chat_member.id, message.chat.id)
+    db.users.remove_rating(message.left_chat_member.id, message.chat.id)
     await message.answer(f"Дія.Рейтинг у {message.left_chat_member.full_name} обнулився!")
