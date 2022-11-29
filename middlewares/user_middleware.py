@@ -26,7 +26,6 @@ class GetDBUserMiddleware(BaseMiddleware):
                     fullname = reply_message.from_user.full_name
                 if not db.users.get_info(user_id):
                     db.users.add(
-                        group_id=message.chat.id,
                         user_id=user_id,
                         username=username,
                         fullname=fullname,
@@ -45,11 +44,12 @@ class GetDBUserMiddleware(BaseMiddleware):
             user_info = db.users.get_info(reply_message.from_user.id)
             if not user_info:
                 db.users.add(
-                    message.chat.id, 
-                    reply_message.from_user.id, 
-                    reply_message.from_user.username, 
-                    reply_message.from_user.full_name
+                    user_id=reply_message.from_user.id, 
+                    username=reply_message.from_user.username, 
+                    fullname=reply_message.from_user.full_name
                 )
+            if not db.get_rating(message.chat.id, reply_message.from_user.id):
+                db.add_rating(message.chat.id, reply_message.from_user.id)
             new_rating = db.set_rating(message.chat.id, reply_message.from_user.id, -1000000)
             data["new_rating"] = new_rating
     async def on_process_callback_query(self, query:types.CallbackQuery, data:dict):

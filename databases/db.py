@@ -7,11 +7,9 @@ class User():
     def get_info(self, id):
         sql = f"SELECT id, username, fullname FROM users WHERE id='{id}'"
         return self.db.connector.execute(sql).fetchone()
-    def add(self, group_id, user_id, username, fullname):
+    def add(self, user_id, username, fullname):
         sql_user_info = f"INSERT INTO users(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
         self.db.connector.execute(sql_user_info)
-        sql_relations = f"INSERT INTO ratings(user_id, group_id) VALUES('{user_id}', '{group_id}')"
-        self.db.connector.execute(sql_relations)
     def remove_rating(self, user_id, group_id):
         sql_delete = f"DELETE FROM ratings WHERE user_id = '{user_id}' AND group_id='{group_id}'"
         self.db.connector.execute(sql_delete)
