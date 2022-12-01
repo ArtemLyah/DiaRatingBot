@@ -1,0 +1,5 @@
+aiogram
+SQLAlchemy
+psycopg2-binary
+logging
+python-dotenv
