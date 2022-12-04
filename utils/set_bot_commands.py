@@ -7,5 +7,6 @@ async def set_default_commands(dp):
             types.BotCommand("help", "Правила користування Дія.рейтинг"),
             types.BotCommand("top", "Топ учасників по рейтингу"),
             types.BotCommand("rating", "Твій теперешій рейтинг"),
+            types.BotCommand("check_content", "Перевірити стан контенту")
         ]
     )

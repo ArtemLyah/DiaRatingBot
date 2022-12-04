@@ -1,0 +1,736 @@
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+ERROR:DiaLog:Flood control exceeded. Retry in 3 seconds.
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 18, in check_cringe
+    progres_message = await message.answer("⌛️ Рівень перевірки ⏳ 0%\n🔴🔴🔴\n👮‍♂️ Початок аналізу")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 3 seconds.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+ERROR:DiaLog:Flood control exceeded. Retry in 39 seconds.
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+ERROR:DiaLog:Flood control exceeded. Retry in 39 seconds.
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 39 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 19, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 39 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 19, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+ERROR:DiaLog:Flood control exceeded. Retry in 35 seconds.
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 39, in check_cringe
+    result_text = result_check_content[level]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 35 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 35 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 39, in check_cringe
+    result_text = result_check_content[level]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 35 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 19, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 35 seconds.
+ERROR:DiaLog:Flood control exceeded. Retry in 33 seconds.
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+ERROR:DiaLog:Flood control exceeded. Retry in 33 seconds.
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-30' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 33 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 19, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-38' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 33 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 35, in check_cringe
+    await progres_message.edit_text(text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 2829, in edit_text
+    return await self.bot.edit_message_text(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 2735, in edit_message_text
+    result = await self.request(api.Methods.EDIT_MESSAGE_TEXT, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 19, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 33 seconds.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+WARNING:DiaLog:Flood control exceeded. Retry in 35 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 35 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 40, in check_cringe
+    await message.reply(result_text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 1619, in reply
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 40 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 35 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 22, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 35 seconds.
+WARNING:DiaLog:Flood control exceeded. Retry in 34 seconds.
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-25' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py:407> exception=RetryAfter('Flood control exceeded. Retry in 34 seconds.')>
+Traceback (most recent call last):
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 40, in check_cringe
+    await message.reply(result_text)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 1619, in reply
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 39 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 43, in check_cringe
+    await message.answer("4️⃣0️⃣4️⃣\nВаш текст настільки складно розпізнати, що сервера детектору упали!\nЗробіть заклик пізніше")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 34 seconds.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 313, in process_update
+    err = await self.errors_handlers.notify(update, e)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\errors\errors.py", line 22, in error_handler
+    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\types\message.py", line 388, in answer
+    return await self.bot.send_message(
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\bot.py", line 334, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\base.py", line 231, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\bot\api.py", line 111, in check_result
+    raise exceptions.RetryAfter(parameters.retry_after)
+aiogram.utils.exceptions.RetryAfter: Flood control exceeded. Retry in 34 seconds.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:DiaLog:Get toplist of group <id=-1001855638066, name=testgroup>
+ERROR:DiaLog:local variable 'user_rating' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\rating.py", line 21, in my_rating
+    await message.reply(f"Рейтинг у {reply_user.full_name} становить: {user_rating} балів\n{status_text(user_rating)}")
+UnboundLocalError: local variable 'user_rating' referenced before assignment
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+ERROR:DiaLog:local variable 'user_rating' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\rating.py", line 21, in my_rating
+    await message.reply(f"Рейтинг у {reply_user.full_name} становить: {reply_user_rating} балів\n{status_text(user_rating)}")
+UnboundLocalError: local variable 'user_rating' referenced before assignment
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:DiaLog:Dia ban for user <id=905143300, name=Артем Лях>
+INFO:DiaLog:New rating of reply user <id=5441535183, name=Reminder, rating=-999960>
+INFO:DiaLog:Sticker of rating was sent
+INFO:DiaLog:User sender <id=905143300, name=Артем Лях>
+INFO:DiaLog:Reply user <id=5441535183, name=Reminder>
+INFO:DiaLog:Sticker of rating was sent
+INFO:DiaLog:User sender <id=905143300, name=Артем Лях>
+INFO:DiaLog:Reply user <id=5441535183, name=Reminder>
+INFO:DiaLog:New rating of reply user <id=5441535183, name=Reminder, rating=-1000010>
+INFO:DiaLog:Dia unban for user <id=905143300, name=Артем Лях, rating=-10>
+INFO:DiaLog:Dia ban for user <id=905143300, name=Артем Лях>
+INFO:DiaLog:New rating of reply user <id=5441535183, name=Reminder, rating=-1000010>
+INFO:DiaLog:Dia ban for user <id=905143300, name=Артем Лях>
+INFO:DiaLog:Dia unban for user <id=905143300, name=Артем Лях, rating=-10>
+ERROR:DiaLog:list index out of range
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 256, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Programming\Python\telegram_bot\diarating\handlers\groups\cringe.py", line 39, in check_cringe
+    result_text = result_check_content[level]
+IndexError: list index out of range
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
