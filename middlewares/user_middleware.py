@@ -4,18 +4,6 @@ from databases import *
 from config import father_id
 from logs import logger
 
-def add_user_to_database(message:types.Message):
-    reply_user = message.reply_to_message.from_user
-    if not users.get_info(reply_user.id):
-        users.add(
-            user_id=reply_user.id,
-            username=reply_user.username,
-            fullname=reply_user.full_name,
-        )
-    # if user isn't in 'users_status'
-    if not users_status.get_status(message.chat.id, reply_user.id):
-        users_status.add_status(message.chat.id, reply_user.id)
-
 class GetDBUserMiddleware(BaseMiddleware):
     # name function on_process_ -> use needed handler (message_handler, callback_query_handler, ...)
     async def on_process_message(self, message:types.Message, data:dict):
@@ -24,9 +12,16 @@ class GetDBUserMiddleware(BaseMiddleware):
         
         reply_user = message.reply_to_message.from_user
         sender_rating = users_status.rating.get_rating(message.chat.id, message.from_user.id)
-
+        if not users.get_info(reply_user.id):
+            users.add(
+                user_id=reply_user.id,
+                username=reply_user.username,
+                fullname=reply_user.full_name,
+            )
+        # if user isn't in 'users_status'
+        if not users_status.get_status(message.chat.id, reply_user.id):
+            users_status.add_status(message.chat.id, reply_user.id)
         if message.content_type == types.ContentType.STICKER:
-            add_user_to_database(message)
             rate = stickers.get_rate(message.sticker.thumb.file_unique_id)
             if not rate:
                 return
@@ -54,10 +49,9 @@ class GetDBUserMiddleware(BaseMiddleware):
             logger.info(f"New rating of reply user "
                         f"<id={reply_user.id}, name={reply_user.full_name}, rating={new_rating}>")
 
-        elif (message.from_user.id == father_id or sender_rating > 2000) and message.text == "/dia_ban":
+        elif sender_rating and (message.from_user.id == father_id or sender_rating > 2000) and message.text == "/dia_ban":
             logger.info(f"Dia ban for user "
                         f"<id={message.from_user.id}, name={message.from_user.full_name}>")
-            add_user_to_database(message)
             if not users_status.isban.get_ban(message.chat.id, reply_user.id):
                 users_status.isban.set_ban(message.chat.id, reply_user.id, True)
                 data["isban"] = True
@@ -66,8 +60,7 @@ class GetDBUserMiddleware(BaseMiddleware):
                 logger.info(f"New rating of reply user "
                     f"<id={reply_user.id}, name={reply_user.full_name}, rating={new_rating}>")
 
-        elif (message.from_user.id == father_id or sender_rating > 2000) and message.text == "/dia_unban":
-            add_user_to_database(message)
+        elif sender_rating and (message.from_user.id == father_id or sender_rating > 2000) and message.text == "/dia_unban":
             if users_status.isban.get_ban(message.chat.id, reply_user.id):
                 users_status.isban.set_ban(message.chat.id, reply_user.id, False)
                 data["isunban"] = True
