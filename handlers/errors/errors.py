@@ -18,6 +18,7 @@ async def error_handler(update:types.Update, exception:Exception):
         logger.warning(exception)
     else:
         await bot.send_message(father_id, str(exception))
+        logger.error("=============================================================")
         logger.exception(exception)
     await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
     return True
