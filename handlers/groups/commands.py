@@ -5,7 +5,7 @@ from databases import groups
 from logs import logger
 from utils.message_texts import help_text
 
-@dp.message_handler(filters.CommandStart(), IsGroup())
+@dp.message_handler(filters.Command(["start"]), IsGroup())
 async def start(message:types.Message):
     await message.answer(help_text)
     groups.add(message.chat.id, message.chat.username, message.chat.full_name)
