@@ -1,7 +1,7 @@
 from aiogram import filters, types
 from dispatcher import dp
 from databases import *
-from utils.message_texts import status_text, format_toplist, help
+from utils.message_texts import status_text, format_toplist
 from filters import IsGroup, IsReplyDiaStickers, IsFather
 from logs import logger
 

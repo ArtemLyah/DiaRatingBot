@@ -3,7 +3,7 @@ from dispatcher import dp
 from filters import IsGroup
 from databases import groups
 from logs import logger
-from utils.message_text import help_text
+from utils.message_texts import help_text
 
 @dp.message_handler(filters.CommandStart(), IsGroup())
 async def start(message:types.Message):
