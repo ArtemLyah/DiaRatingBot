@@ -8,7 +8,8 @@ from utils.message_texts import help_text
 @dp.message_handler(filters.Command(["start"]), IsGroup())
 async def start(message:types.Message):
     await message.answer(help_text)
-    groups.add(message.chat.id, message.chat.username, message.chat.full_name)
+    if not groups.get_info(message.chat.id):
+        groups.add(message.chat.id, message.chat.username, message.chat.full_name)
     logger.info(f"New start in group <id={message.chat.id}, name={message.chat.full_name}>")
 
 @dp.message_handler(filters.Command(["help"]), IsGroup())

@@ -1,7 +1,7 @@
 from dispatcher import dp, bot
 from databases import database
 from aiogram import types
-from aiogram.utils.exceptions import RetryAfter
+from aiogram.utils.exceptions import RetryAfter, TerminatedByOtherGetUpdates
 from psycopg2 import InterfaceError
 from config import father_id
 from logs import logger
@@ -20,5 +20,5 @@ async def error_handler(update:types.Update, exception:Exception):
         await bot.send_message(father_id, str(exception))
         logger.error("=============================================================")
         logger.exception(exception)
-    await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
+        await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
     return True
