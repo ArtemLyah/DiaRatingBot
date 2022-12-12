@@ -7,7 +7,7 @@ load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-father_id = 905143300
+father_id = os.getenv("father_id")
 
 database_settings = {
     "drivername":"postgresql+psycopg2",
