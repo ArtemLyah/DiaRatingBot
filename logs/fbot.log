@@ -7,3 +7,25 @@ INFO:DiaLog:New start in group <id=-1001855638066, name=testgroup>
 INFO:DiaLog:New start in group <id=-1001855638066, name=testgroup>
 INFO:aiogram.dispatcher.dispatcher:Stop polling...
 WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:DiaLog:Get toplist of group <id=-1001855638066, name=testgroup>
+INFO:DiaLog:Sticker of rating was sent
+INFO:DiaLog:User sender <id=905143300, name=Артем Лях>
+INFO:DiaLog:Reply user <id=226543640, name=KarmaBot>
+INFO:DiaLog:New rating of reply user <id=226543640, name=KarmaBot, rating=50>
+INFO:DiaLog:Get toplist of group <id=-1001855638066, name=testgroup>
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!
+INFO:aiogram:Bot: Reminder [@TestReminder9182Bot]
+INFO:DiaLog:Bot is working...
+INFO:aiogram.dispatcher.dispatcher:Start polling.
+INFO:DiaLog:Sticker of rating was sent
+INFO:DiaLog:User sender <id=905143300, name=Артем Лях>
+INFO:DiaLog:Reply user <id=226543640, name=KarmaBot>
+INFO:DiaLog:New rating of reply user <id=226543640, name=KarmaBot, rating=50>
+INFO:DiaLog:Get toplist of group <id=-1001855638066, name=testgroup>
+INFO:DiaLog:Get toplist of group <id=-1001855638066, name=testgroup>
+INFO:aiogram.dispatcher.dispatcher:Stop polling...
+WARNING:aiogram:Goodbye!

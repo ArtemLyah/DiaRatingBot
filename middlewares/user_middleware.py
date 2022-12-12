@@ -22,7 +22,7 @@ class GetDBUserMiddleware(BaseMiddleware):
         if not users_status.get_status(message.chat.id, reply_user.id):
             users_status.add_status(message.chat.id, reply_user.id)
         if message.content_type == types.ContentType.STICKER:
-            rate = stickers.get_rate(message.sticker.thumb.file_unique_id)
+            rate = stickers.get_info(message.sticker.thumb.file_unique_id)
             if not rate:
                 return
             logger.info(f"Sticker of rating was sent")

@@ -61,8 +61,9 @@ class Users():
         :param fullname: user's fullname from :obj:`message.from_user.fullname`
 
         """
-        sql_user_info = f"INSERT INTO users(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
-        self.db.connector.execute(sql_user_info)
+        if not self.get_info(user_id):
+            sql_user_info = f"INSERT INTO users(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
+            self.db.connector.execute(sql_user_info)
 
 class Groups():
     def __init__(self, db:Database) -> None:
@@ -114,7 +115,7 @@ class Stickers():
         """
         self.db = db
 
-    def get_rate(self, unique_file_id):
+    def get_info(self, unique_file_id):
         """
         Get information about sticker from table 'stickers'
 
@@ -137,8 +138,9 @@ class Stickers():
         :param rate: rate of sticker
 
         """
-        sql_stickers = f"INSERT INTO stickers(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
-        self.db.connector.execute(sql_stickers)
+        if not self.get_info(unique_file_id):
+            sql_stickers = f"INSERT INTO stickers(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
+            self.db.connector.execute(sql_stickers)
 
 class UsersStatus():
     def __init__(self, db:Database) -> None:
