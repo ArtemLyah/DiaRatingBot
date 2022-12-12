@@ -177,7 +177,7 @@ class UsersStatus():
         status = self.db.connector.execute(sql_status).fetchone()
         return status[0] if status else None
 
-    def add_status(self, group_id, user_id, rating=0, isban=False, status_text=''):
+    def add_status(self, group_id, user_id, rating=0, isban=False):
         sql_relations = "INSERT INTO users_status(user_id, group_id, rating, is_ban) "+\
                         f"VALUES('{user_id}', '{group_id}', {rating}, {isban})"
         self.db.connector.execute(sql_relations)
