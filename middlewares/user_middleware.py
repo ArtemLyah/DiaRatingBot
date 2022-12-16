@@ -31,7 +31,7 @@ class GetDBUserMiddleware(BaseMiddleware):
 
             # check wether user is cheater
             data["is_cheater"] = message.from_user.id == reply_user.id and reply_user.id != father_id
-            if data["is_cheater"]:
+            if data["is_cheater"] and rate > 0:
                 logger.info(f"User <id={message.from_user.id}, name={message.from_user.full_name}> is cheater")
                 # decrease rating if cheater
                 rate = -50
