@@ -26,6 +26,7 @@ async def add_sticker(message:types.Message, state:FSMContext):
     })
     await message.answer("Now send rate of the sticker")
     await AddSticker_State.add_rate.set()
+    
 @dp.message_handler(IsPrivate(), IsFather(), state=AddSticker_State.add_rate)
 async def add_rate(message:types.Message, state:FSMContext):
     unique_file_id = (await state.get_data())["unique_file_id"]

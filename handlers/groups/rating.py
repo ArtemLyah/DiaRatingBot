@@ -38,6 +38,7 @@ async def ban_rating(message:types.Message, new_rating=0, isban=False):
         await message.answer(f"Рейтинг у {message.reply_to_message.from_user.full_name} тепер становить {new_rating}!")
     else:
         await message.answer(f"{message.reply_to_message.from_user.full_name} вже забанено!")
+        
 @dp.message_handler(IsGroup(), IsFather(), filters.Command(["dia_unban"]))
 async def ban_rating(message:types.Message, new_rating=0, isunban=False):
     if not message.reply_to_message:
