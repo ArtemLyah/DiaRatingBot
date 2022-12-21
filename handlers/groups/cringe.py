@@ -15,13 +15,13 @@ async def check_cringe(message:types.Message):
     try:
         max_progres = 35
         progres = 0
-        await message.answer("⚠️ Перевірка контенту ⚠️")
-        progres_message = await message.answer("⌛️ Рівень перевірки ⏳ 0%\n🔴🔴🔴\n👮‍♂️ Початок аналізу")
+        text = "⚠️ Перевірка контенту ⚠️\n⌛️ Рівень перевірки ⏳ 0%\n🔴🔴🔴\n👮‍♂️ Початок аналізу"
+        progres_message = await message.answer(text)
         while progres < max_progres:
             progres += random.randint(5, 8)
             if progres >= max_progres: progres = max_progres
 
-            text = f"⌛️ Рівень перевірки ⏳ {round(progres/max_progres*100)}%\n"
+            text = f"⚠️ Перевірка контенту ⚠️\n⌛️ Рівень перевірки ⏳ {round(progres/max_progres*100)}%\n"
             if progres/max_progres < 0.33:
                 subtext = random.choice(progres_check_content[0])
                 text += "🟢🔴🔴\n"+subtext
