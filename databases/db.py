@@ -1,5 +1,4 @@
 import sqlalchemy as sa
-from config import database_settings
 from .user_settings import Rating, IsBan
 
 class Database():
@@ -166,6 +165,7 @@ class UsersStatus():
         """
         sql_get_top = f"SELECT user_id, rating FROM users_status WHERE group_id='{group_id}'"
         toplist = []
+        users = Users(self.db)
         for user_rating in self.db.connector.execute(sql_get_top).fetchall():
             user_id = user_rating[0]
             _, _, fullname = users.get_info(user_id)
@@ -185,11 +185,3 @@ class UsersStatus():
     def remove_status(self, user_id, group_id):
         sql_delete = f"DELETE FROM users_status WHERE user_id = '{user_id}' AND group_id='{group_id}'"
         self.db.connector.execute(sql_delete)
-
-if __name__ != "__main__":
-    database = Database(database_settings)
-    database.connect()
-    users = Users(database)
-    groups = Groups(database)
-    stickers = Stickers(database)
-    users_status = UsersStatus(database)
