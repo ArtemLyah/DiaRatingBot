@@ -1,5 +1,5 @@
 import sqlalchemy as sa
-from .user_settings import Rating, IsBan
+from .user_status import Rating, IsBan
 
 class Database():
     def __init__(self, database_settings) -> None:
@@ -48,8 +48,8 @@ class Users():
         :rtype: str, str, str
 
         """
-        sql = f"SELECT id, username, fullname FROM users WHERE id='{user_id}'"
-        return self.db.connector.execute(sql).fetchone()
+        sql_select_user = f"SELECT id, username, fullname FROM users WHERE id='{user_id}'"
+        return self.db.connector.execute(sql_select_user).fetchone()
 
     def add(self, user_id, username, fullname):
         """
@@ -61,8 +61,8 @@ class Users():
 
         """
         if not self.get_info(user_id):
-            sql_user_info = f"INSERT INTO users(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
-            self.db.connector.execute(sql_user_info)
+            sql_insert_user = f"INSERT INTO users(id, username, fullname) VALUES('{user_id}', '{username}', '{fullname}')"
+            self.db.connector.execute(sql_insert_user)
 
 class Groups():
     def __init__(self, db:Database) -> None:
@@ -86,8 +86,8 @@ class Groups():
         :rtype: str, str, str
 
         """
-        sql = f"SELECT * FROM groups WHERE id='{id}'"
-        return self.db.connector.execute(sql).fetchone()
+        sql_select_group = f"SELECT * FROM groups WHERE id='{id}'"
+        return self.db.connector.execute(sql_select_group).fetchone()
 
     def add(self, group_id, username, name):
         """
@@ -99,8 +99,8 @@ class Groups():
 
         """
         if not self.get_info(group_id):
-            sql_group_info = f"INSERT INTO groups(id, username, name) VALUES('{group_id}', '{username}', '{name}')"
-            self.db.connector.execute(sql_group_info)
+            sql_insert_group = f"INSERT INTO groups(id, username, name) VALUES('{group_id}', '{username}', '{name}')"
+            self.db.connector.execute(sql_insert_group)
 
 class Stickers():
     def __init__(self, db:Database) -> None:
@@ -125,8 +125,8 @@ class Stickers():
         :rtype: int
 
         """
-        sql = f"SELECT rate FROM stickers WHERE unique_file_id='{unique_file_id}'"
-        sticker = self.db.connector.execute(sql).fetchone()
+        sql_select_sticker = f"SELECT rate FROM stickers WHERE unique_file_id='{unique_file_id}'"
+        sticker = self.db.connector.execute(sql_select_sticker).fetchone()
         return sticker[0] if sticker else None
 
     def add_sticker(self, unique_file_id, rate):
@@ -138,10 +138,10 @@ class Stickers():
 
         """
         if not self.get_info(unique_file_id):
-            sql_stickers = f"INSERT INTO stickers(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
-            self.db.connector.execute(sql_stickers)
+            sql_insert_sticker = f"INSERT INTO stickers(unique_file_id, rate) VALUES('{unique_file_id}', {rate})"
+            self.db.connector.execute(sql_insert_sticker)
 
-class UsersStatus():
+class UserStatus():
     def __init__(self, db:Database) -> None:
         """
         Object of table 'user_status'
@@ -163,25 +163,26 @@ class UsersStatus():
         :return: list_of_users [[full_name_1, rating_1], [full_name_2, rating_2], ...] sorted by max rating
 
         """
-        sql_get_top = f"SELECT user_id, rating FROM users_status WHERE group_id='{group_id}'"
+        sql_select_ratings = f"SELECT user_id, rating FROM users_status WHERE group_id='{group_id}'"
         toplist = []
         users = Users(self.db)
-        for user_rating in self.db.connector.execute(sql_get_top).fetchall():
+        for user_rating in self.db.connector.execute(sql_select_ratings).fetchall():
             user_id = user_rating[0]
+            rating = user_rating[1]
             _, _, fullname = users.get_info(user_id)
-            toplist.append([fullname, user_rating[1]])
+            toplist.append([fullname, rating])
         return sorted(toplist, key=lambda l: l[1], reverse=True)
 
     def get_status(self, group_id, user_id):
-        sql_status = f"SELECT * FROM users_status WHERE group_id='{group_id}' AND user_id='{user_id}'"
-        status = self.db.connector.execute(sql_status).fetchone()
+        sql_select_status = f"SELECT * FROM users_status WHERE group_id='{group_id}' AND user_id='{user_id}'"
+        status = self.db.connector.execute(sql_select_status).fetchone()
         return status[0] if status else None
 
     def add_status(self, group_id, user_id, rating=0, isban=False):
-        sql_relations = "INSERT INTO users_status(user_id, group_id, rating, is_ban) "+\
+        sql_insert_status = "INSERT INTO users_status(user_id, group_id, rating, is_ban) "+\
                         f"VALUES('{user_id}', '{group_id}', {rating}, {isban})"
-        self.db.connector.execute(sql_relations)
+        self.db.connector.execute(sql_insert_status)
 
     def remove_status(self, user_id, group_id):
-        sql_delete = f"DELETE FROM users_status WHERE user_id = '{user_id}' AND group_id='{group_id}'"
-        self.db.connector.execute(sql_delete)
+        sql_delete_status = f"DELETE FROM users_status WHERE user_id = '{user_id}' AND group_id='{group_id}'"
+        self.db.connector.execute(sql_delete_status)

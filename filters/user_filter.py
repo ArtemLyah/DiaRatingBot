@@ -1,6 +1,6 @@
 from aiogram.dispatcher import filters
 from aiogram import types
-from config import father_id
+from config import FATHER_ID
 
 class IsPrivate(filters.BoundFilter):
     async def check(self, message:types.Message) -> bool:
@@ -8,4 +8,4 @@ class IsPrivate(filters.BoundFilter):
 
 class IsFather(filters.BoundFilter):
     async def check(self, message:types.Message) -> bool:
-        return message.from_user.id == father_id
+        return message.from_user.id == FATHER_ID

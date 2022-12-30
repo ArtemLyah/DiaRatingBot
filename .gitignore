@@ -1,2 +1,15 @@
 /.env
 /logs/fbot.log
+
+
+/__pycache__
+/databases/__pycache__
+/filters/__pycache__
+/handlers/__pycache__
+/handlers/errors/__pycache__
+/handlers/groups/__pycache__
+/handlers/users/__pycache__
+/logs/__pycache__
+/middlewares/__pycache__
+/state/__pycache__
+/utils/__pycache__

@@ -7,22 +7,21 @@ from logs import logger
 
 @dp.message_handler(filters.Command(["top"]), IsGroup())
 async def get_top(message:types.Message):
-    toplist = users_status.get_top_by_rating(message.chat.id)
+    toplist = user_status.get_top_by_rating(message.chat.id)
     await message.answer(format_toplist(toplist))
     logger.info(f"Get toplist of group <id={message.chat.id}, name={message.chat.full_name}>")
 
 @dp.message_handler(filters.Command(["rating"]), IsGroup())
 async def my_rating(message:types.Message):
-
     if message.reply_to_message:
         reply_user = message.reply_to_message.from_user
-        reply_user_rating = users_status.rating.get_rating(message.chat.id, reply_user.id)
+        reply_user_rating = user_status.rating.get_rating(message.chat.id, reply_user.id)
         if reply_user_rating:
-            await message.reply(f"Рейтинг у {reply_user.full_name} становить: {reply_user_rating} балів\n{status_text(reply_user_rating)}")
+            await message.reply(f"Рейтинг у <b>{reply_user.full_name}</b> становить: {reply_user_rating} балів\n{status_text(reply_user_rating)}")
         else:
-            await message.reply(f"{reply_user.full_name} ще не отримав/ла бали")
+            await message.reply(f"<b>{reply_user.full_name}</b> ще не отримав/ла бали")
     else:
-        user_rating = users_status.rating.get_rating(message.chat.id, message.from_user.id)
+        user_rating = user_status.rating.get_rating(message.chat.id, message.from_user.id)
         if user_rating:
             await message.reply(f"Твій рейтинг становить: {user_rating} балів\n{status_text(user_rating)}")
         else:
@@ -63,5 +62,5 @@ async def increase_rating(message:types.Message, new_rating=0, is_cheater=False,
 
 @dp.message_handler(IsGroup(), content_types=[types.ContentType.LEFT_CHAT_MEMBER])
 async def user_left(message:types.Message):
-    users_status.remove_status(message.left_chat_member.id, message.chat.id)
+    user_status.remove_status(message.left_chat_member.id, message.chat.id)
     await message.answer(f"Дія.Рейтинг у {message.left_chat_member.full_name} обнулився!")
