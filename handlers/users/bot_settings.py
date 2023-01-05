@@ -33,6 +33,6 @@ async def add_rate(message:types.Message, state:FSMContext):
     rating = int(message.text)
     stickers.add_sticker(unique_file_id, rating)
     logger.info(f"New sticker <unique_file_id={unique_file_id}, rating={rating}>")
-    await message.answer(f"New sticker <unique_file_id={unique_file_id}, rating={rating}> has been added")
+    await message.answer(f"New sticker: \nunique_file_id={unique_file_id} \nrating={rating} has been added")
     await state.finish()
     
