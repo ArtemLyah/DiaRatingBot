@@ -1,5 +1,5 @@
 from aiogram import filters, types
-from dispatcher import dp
+from dispatcher import dp, bot
 from databases import *
 from utils.message_texts import status_text, format_toplist
 from filters import IsGroup, IsReplyDiaStickers, IsFather
@@ -62,5 +62,6 @@ async def increase_rating(message:types.Message, new_rating=0, is_cheater=False,
 
 @dp.message_handler(IsGroup(), content_types=[types.ContentType.LEFT_CHAT_MEMBER])
 async def user_left(message:types.Message):
-    user_status.remove_status(message.left_chat_member.id, message.chat.id)
-    await message.answer(f"Дія.Рейтинг у {message.left_chat_member.full_name} обнулився!")
+    if message.left_chat_member.id != bot.id:
+        user_status.remove_status(message.left_chat_member.id, message.chat.id)
+        await message.answer(f"Дія.Рейтинг у {message.left_chat_member.full_name} обнулився!")

@@ -20,5 +20,9 @@ async def error_handler(update:types.Update, exception:Exception):
         await bot.send_message(FATHER_ID, str(exception))
         logger.error("=============================================================")
         logger.exception(exception)
+        logger.exception("Message information"
+            "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n"+\
+            f"<Chat id: {update.message.chat.id}>\n<From user id: {update.message.from_user.id}>"+\
+            "\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n")
         await update.message.answer("😢Бот трошки поламався😢\n🛠Зараз криворукий розробник все налагодить🛠")
     return True
