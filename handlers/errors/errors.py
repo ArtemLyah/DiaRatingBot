@@ -1,7 +1,7 @@
 from aiogram import Router, types
 from aiogram import exceptions
 from loader import bot
-from config import FATHER_ID
+from config import ADMINS
 from traceback import format_exc
 import logging
 
@@ -13,5 +13,5 @@ async def error_handler(event: types.ErrorEvent):
         logging.debug("Bot was blocked")
 
     logging.exception(format_exc())
-    await bot.send_message(FATHER_ID, format_exc(limit=-1, chain=False))
+    await bot.send_message(ADMINS[0], format_exc(limit=-5, chain=False))
     return True

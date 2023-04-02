@@ -2,7 +2,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 # from aiogram.fsm.storage.redis import RedisStorage
 from databases.connection import Database
-from databases import models
+from databases.models import *
 from utils.logs import logger
 
 import config

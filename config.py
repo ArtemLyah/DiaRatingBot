@@ -14,6 +14,6 @@ db_settings = {
 }
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-FATHER_ID = int(os.getenv("FATHER_ID"))
+ADMINS = [905143300, 572127054]
 
 create_db = True

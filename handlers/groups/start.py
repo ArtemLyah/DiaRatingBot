@@ -1,11 +1,21 @@
-from aiogram import Router, Bot
+from aiogram import Router, Bot, filters, types
+from aiogram.enums.chat_type import ChatType
 from aiogram.filters.chat_member_updated import ChatMemberUpdatedFilter 
 from aiogram.filters.chat_member_updated import IS_NOT_MEMBER, IS_MEMBER 
-from aiogram.types import ChatMemberUpdated
+from loader import bot
+from filters import ChatTypeFilter
 from services.group_service import GroupService
-from keyboards.inline.inline_keyboard import inline_keyboard
+from utils.set_bot_commands import add_admin_commands_to_chat
+from data import text
+
+from .rating import rating_router
+from .features import feature_router
 
 group_router = Router()
+group_router.include_router(feature_router)
+group_router.include_router(rating_router)
+group_router.message.filter(ChatTypeFilter((ChatType.GROUP, ChatType.SUPERGROUP)))
+
 group_service = GroupService()
 
 @group_router.my_chat_member(
@@ -13,7 +23,20 @@ group_service = GroupService()
         member_status_changed=(IS_NOT_MEMBER >> IS_MEMBER)
     )
 )
-async def join_group(event: ChatMemberUpdated, bot: Bot):
+async def join_group(event: types.ChatMemberUpdated, bot: Bot):
     chat = event.chat
-    group_service.addGroup(chat.id, chat.full_name, chat.type)
-    await bot.send_message(chat.id, "Hello", reply_markup=inline_keyboard)
+    group_service.addGroup(chat.id, chat.full_name)
+    await bot.send_message(chat.id, text.help)
+
+@group_router.message(filters.CommandStart())
+async def start(message: types.Message):
+    chat = message.chat
+    group_service.addGroup(chat.id, chat.full_name)
+    await add_admin_commands_to_chat(bot, chat.id)
+    await message.answer(text.help)
+
+@group_router.message(filters.Command("help"))
+async def help(message: types.Message):
+    await message.answer(text.help)
+
+
