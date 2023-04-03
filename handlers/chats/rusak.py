@@ -89,6 +89,9 @@ async def compare_rusak(message: types.Message):
         await message.answer(f"{reply_user.full_name} не має русака")
         return
 
+    user_rusak = user_rusak
+    reply_rusak = reply_rusak
+
     if not user_rusak:
         await message.reply("У вас не має русака")
     elif not reply_rusak:
