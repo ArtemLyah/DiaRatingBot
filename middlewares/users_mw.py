@@ -15,19 +15,19 @@ class UsersMiddleware(BaseMiddleware):
         match type(event):
             case types.CallbackQuery:
                 user = event.message.from_user
-                chat = event.message.chat
+                group = event.message.chat
             case types.Message:
                 user = event.from_user
-                chat = event.chat
+                group = event.chat
             case _:
                 user = event.from_user
                 user = event.message.chat
-
-        userGroup = user_service.addUserGroup(chat.id, user.id)
+            
+        user = user_service.addUser(user.id, user.full_name, user.username)
+        userGroup = user_service.addUserGroup(group.id, user.id)
         if userGroup.is_ban and not user.id in ADMINS:
             return
-            
-        data["db_user"] = user_service.addUser(user.id, user.full_name, user.username)
-        data["db_counting"] = counting_service.addCountings(user.id)
+        data["db_user"] = user
         data["db_userGroup"] = userGroup
+        data["db_counting"] = counting_service.addCountings(user.id)
         await handler(event, data)

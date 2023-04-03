@@ -18,7 +18,7 @@ async def dia_ban(message: types.Message):
         return
     reply_user = message.reply_to_message.from_user
     group = message.chat
-    reply_userGroup = user_service.getUserGroup(group.id, reply_user.id)
+    reply_userGroup = user_service.addUserGroup(group.id, reply_user.id)
 
     if reply_userGroup.is_ban:
         await message.answer(f"{reply_user.first_name} has already been banned")

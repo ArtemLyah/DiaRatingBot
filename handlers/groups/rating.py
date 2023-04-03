@@ -28,6 +28,7 @@ async def addRating(message: types.Message, rating: int, db_userGroup: UserGroup
     group = message.chat
     user = message.from_user
     reply_user = message.reply_to_message.from_user
+    user_service.addUser(reply_user.id, reply_user.full_name, reply_user.username)
     db_reply_userGroup = user_service.addUserGroup(group.id, reply_user.id)
 
     if user.id == reply_user.id and not user.id in ADMINS:
@@ -40,7 +41,7 @@ async def addRating(message: types.Message, rating: int, db_userGroup: UserGroup
 
     if datetime.now().date() >= update_limit_date:
         counting_service.resetCountings(user.id, count_rating=abs(rating))
-    elif new_count_rating > limit_raiting and not user.id in ADMINS:
+    elif new_count_rating > limit_raiting:
         await message.answer("Ваш щоденний ліміт на дія.бали вичерпався")
         return 
     else:
@@ -87,6 +88,7 @@ class PresentHandler(MessageHandler):
             return
 
         reply_user, rating = commands
+        user_service.addUser(reply_user.id, reply_user.full_name, reply_user.username)
         reply_userGroup = user_service.addUserGroup(group_id, reply_user.id)
 
         if datetime.now().date() >= db_counting.update_limit_date:
