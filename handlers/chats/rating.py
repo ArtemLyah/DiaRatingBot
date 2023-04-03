@@ -44,7 +44,7 @@ async def mine_rating(
         counting_service.resetCountings(db_user.id)
         count_mining = 0
     elif count_mining >= 15:
-        await message.reply("Ваш щоденний ліміт на майнін вичерпався")
+        await message.reply("Ваш щоденний ліміт на майнінг вичерпався")
         return
 
     counting_service.updateCounting(
