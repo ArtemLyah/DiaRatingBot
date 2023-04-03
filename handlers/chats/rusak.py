@@ -34,6 +34,7 @@ async def create_rusak(
     await callback.message.answer_photo(
         photo=photo_url,
         caption=text.rusak_info(
+            user.full_name,
             rusak.name, 
             rusak.intellect, 
             rusak.strength, 
@@ -55,6 +56,7 @@ async def get_rusak(message: types.Message):
     await message.reply_photo(
         photo=photo_url,
         caption=text.rusak_info(
+            user.full_name,
             rusak.name, 
             rusak.intellect, 
             rusak.strength, 
@@ -77,12 +79,19 @@ async def compare_rusak(message: types.Message):
         return 
         
     reply_user = message.reply_to_message.from_user
-    user_rusak = (await rusak_service.get_rusak(user.id))[0]
-    reply_rusak = (await rusak_service.get_rusak(reply_user.id))[0]
-    
+    user_rusak = await rusak_service.get_rusak(user.id)
+    reply_rusak = await rusak_service.get_rusak(reply_user.id)
+
+    if not user_rusak:
+        await message.reply("У вас не має русака")
+        return
+    if not reply_rusak:
+        await message.answer(f"{reply_user.full_name} не має русака")
+        return
+
     if not user_rusak:
         await message.reply("У вас не має русака")
     elif not reply_rusak:
         await message.reply(f"{reply_user.full_name} не має русака")
     else:
-        await message.answer(text.format_comparing_rusak(user_rusak, reply_rusak))
+        await message.reply(text.format_comparing_rusak(user_rusak, reply_rusak))

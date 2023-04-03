@@ -185,10 +185,10 @@ def inline_answers(query: str):
         "topic" : topic
     }
 
-def rusak_info(name, intelligent, strength, rashism, health):
+def rusak_info(user_full_name, name, intelligent, strength, rashism, health):
     emojies = list("🚽🗿🚜☃️🐒🐷🪖🤡💩👽")
     emoji = random.choice(emojies)
-    return f"{emoji} Твій русак: \n\n" +\
+    return f"{emoji} Русак у {user_full_name}: \n\n" +\
         f"📝 Ім'я: {name}\n" +\
         f"🧠 Інтелект: {intelligent}\n" +\
         f"💪 Сила: {strength}\n" +\
