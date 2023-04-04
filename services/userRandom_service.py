@@ -23,7 +23,8 @@ class UserRandomService():
     
     def updateUsers(self, group_id, users: list[Users], text_id: int):
         db_session.query(UserRandom)\
-            .filter(
+            .filter(             
+                UserRandom.user_group_id == UserGroup.id,
                 UserGroup.group_id == str(group_id)
             ).delete(synchronize_session=False)
                     

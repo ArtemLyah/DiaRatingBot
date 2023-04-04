@@ -264,6 +264,10 @@ class FormatRandomDay():
     
     def format_text_by_text_id(self, users: list[Users], text_id) -> str:
         usernames = [user.username for user in users]
-        return self.textlist[text_id]["text"].format(*usernames)
+        text = self.textlist[text_id]
+        n_users = text["n_users"]
+        while len(usernames) < n_users:
+            usernames.append(usernames[-1])
+        return text["text"].format(*usernames)
 
 format_random_day = FormatRandomDay()
