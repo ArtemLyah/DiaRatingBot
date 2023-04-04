@@ -9,6 +9,12 @@ class Database():
         self.url = sa.engine.url.URL.create(**settings)
 
     def connect(self):
-        self.engine = sa.create_engine(self.url)
+        self.engine = sa.create_engine(
+            self.url, 
+            pool_pre_ping=True,
+            max_overflow=2,
+            pool_recycle=300,
+            pool_use_lifo=True
+        )
         self.connector = self.engine.connect()
         self.session = sessionmaker(self.engine)()
