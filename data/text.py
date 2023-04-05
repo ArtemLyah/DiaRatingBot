@@ -182,7 +182,7 @@ def inline_answers(query: str):
         "past_live" : f"В минулому житті ти був {part_live_text}",
         "ideology" : f"Твоя політична ідеологія: {ideology}",
         "exercises" : f"{exercise} {count_of_exercises} разів!",
-        "topic" : topic
+        "topic" : f"Щось тихо тут. Давайте поговоримо на тему:\n{topic}"
     }
 
 def rusak_info(user_full_name, name, intelligent, strength, rashism, health):

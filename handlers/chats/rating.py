@@ -69,4 +69,4 @@ async def mine_rating(
         return
     
     new_rating = rating_service.addRating(db_userGroup, rating)
-    await message.reply(text.format_status(f"Ви намайнили {rating} дія.балів", new_rating))
+    await message.reply(text.format_status(f"Ви намайнили {rating} дія.балів.\nЗараз ваш рейтинг становить {new_rating}", new_rating))
