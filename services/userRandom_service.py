@@ -28,4 +28,5 @@ class UserRandomService():
                 UserGroup.group_id == str(group_id)
             ).delete(synchronize_session=False)
                     
+        db_session.commit()
         self.addUsers(group_id, users, text_id)
