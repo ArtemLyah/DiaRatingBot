@@ -12,7 +12,7 @@ class LoggingMessageMiddleware(BaseMiddleware):
         chat_id = event.chat.id
         user_id = event.from_user.id
         text = event.text
-        if not text.startswith("/"):
+        if text and not text.startswith("/"):
             return
         logger.debug(f"[Message] gid: {chat_id} | uid: {user_id} | text: {text}")
         return await handler(event, data)
