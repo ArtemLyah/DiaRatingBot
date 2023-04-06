@@ -210,7 +210,7 @@ def format_top(top):
     result = "Топ користувачів Дія.Рейтингом у групі:\n"
     for i, info in enumerate(top, 1):
         name, rating = info
-        if i == 11: result += "\n"
+        if i % 10 == 0: result += "\n"
         result += f"{i}. {hbold(name)} {rating} дія.балів\n"
     return result
 
