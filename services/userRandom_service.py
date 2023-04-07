@@ -3,6 +3,7 @@ from typing import Tuple
 from services import UserService
 from loader import db_session
 from datetime import date
+from utils.mics import next_update_day
 
 user_service = UserService()
 
@@ -15,9 +16,14 @@ class UserRandomService():
                     .all()
 
     def addUsers(self, group_id, users: list[Users], text_id: int):
+        next_day = next_update_day()
         for user in users:
             user_group = user_service.getUserGroup(group_id, user.id)
-            user_random = UserRandom(user_group_id = user_group.id, text_id = text_id)
+            user_random = UserRandom(
+                user_group_id = user_group.id, 
+                text_id = text_id,
+                date_update = next_day
+            )
             db_session.add(user_random)
         db_session.commit()
     
