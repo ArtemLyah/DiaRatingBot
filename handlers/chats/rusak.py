@@ -68,8 +68,10 @@ async def get_rusak(message: types.Message):
 @rusak_router.message(filters.Command("kill_rusak"))
 async def delete_rusak(message: types.Message):
     user = message.from_user
-    rusak_name = rusak_service.delete_rusak(user.id)
-    await message.reply(f'{rusak_name} був убитий.\nНове м\'ясо на борщ')
+    rusak = rusak_service.delete_rusak(user.id)
+    if not rusak:
+        await message.reply(f'У вас не має русака')
+    await message.reply(f'{rusak.name} був убитий.\nНове м\'ясо на борщ')
 
 @rusak_router.message(filters.Command("compare_rusak"))
 async def compare_rusak(message: types.Message):

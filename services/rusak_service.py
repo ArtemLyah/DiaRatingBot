@@ -53,11 +53,13 @@ class RusakService():
         return rusak, await self.get_photo(rusak.photo_id)
     
     def delete_rusak(self, user_id):
-        name = db_session.query(Rusak.name)\
+        rusak = db_session.query(Rusak)\
             .filter(Rusak.user_id == str(user_id))\
-                .first()[0]
+                .first()
+        if not rusak:
+            return None
         db_session.query(Rusak)\
             .filter(Rusak.user_id == str(user_id))\
                 .delete(synchronize_session=False)
         db_session.commit()
-        return name
+        return rusak
