@@ -5,7 +5,7 @@ inline_router = Router()
 
 @inline_router.inline_query()
 async def inline_handler(inline_query: types.InlineQuery):
-    answers = text.inline_answers(inline_query.query)
+    answers = await text.inline_answers(inline_query.query)
     results = [
         types.InlineQueryResultArticle(
             id = "1",
