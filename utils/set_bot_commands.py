@@ -14,7 +14,7 @@ async def add_admin_commands_to_chat(bot:Bot, chat_id: int):
 
 async def set_default_commands(bot: Bot):
     await bot.set_my_commands(
-        commands=BOT_COMMANDS["all_chat"]+BOT_COMMANDS["private_chat"],
+        commands=BOT_COMMANDS["all_chat"]+BOT_COMMANDS["private_chat"]+BOT_COMMANDS["father"],
         scope=BotCommandScopeAllPrivateChats()
     )
     await bot.set_my_commands(
