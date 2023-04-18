@@ -2,7 +2,7 @@ from aiogram import Router, filters, types
 from aiogram.fsm.context import FSMContext
 from filters import IsAdminFilter
 from services import UserService, RatingService
-
+from data.text import format_status
 from .sticker_settings import sticker_settings_router
 
 admin_router = Router()
@@ -21,14 +21,14 @@ async def dia_ban(message: types.Message):
     reply_userGroup = user_service.addUserGroup(group.id, reply_user.id)
 
     if reply_userGroup.is_ban:
-        await message.answer(f"{reply_user.first_name} has already been banned")
+        await message.reply(f"{reply_user.first_name} вже забанений/a.")
         return
 
     user_service.setBan(group.id, reply_user.id, True)
     new_rating = rating_service.addRating(reply_userGroup, -10**6)
 
-    await message.answer(f"{reply_user.first_name} has been banned")
-    await message.answer(f"New rating in {reply_user.first_name} is {new_rating}")
+    await message.reply(f"{reply_user.first_name} було забанено та знищено")
+    await message.answer(format_status(f"Рейтинг у {reply_user.first_name} тепер становить {new_rating}", new_rating))
 
 @admin_router.message(filters.Command("dia_unban"))
 async def dia_unban(message: types.Message):
@@ -39,14 +39,14 @@ async def dia_unban(message: types.Message):
     reply_userGroup = user_service.getUserGroup(group.id, reply_user.id)
 
     if not reply_userGroup.is_ban:
-        await message.answer(f"{reply_user.first_name} hasn't been banned")
+        await message.reply(f"{reply_user.first_name} не був/ла забанений/а")
         return
 
     user_service.setBan(group.id, reply_user.id, False)
     new_rating = rating_service.addRating(reply_userGroup, 10**6)
 
-    await message.answer(f"{reply_user.first_name} has been unbanned")
-    await message.answer(f"New rating in {reply_user.first_name} is {new_rating}")
+    await message.reply(f"{reply_user.first_name} успішно розбанено! Сподіваємось ви нас не розчаруєте")
+    await message.answer(format_status(f"Новий рейтинг у {reply_user.first_name} становить {new_rating}", new_rating))
 
 @admin_router.message(filters.Command("cancel"))
 async def cancel(message: types.Message, state: FSMContext):

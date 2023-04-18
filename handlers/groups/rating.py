@@ -42,7 +42,7 @@ async def addRating(message: types.Message, rating: int, db_userGroup: UserGroup
     if datetime.now().date() >= update_limit_date:
         counting_service.resetCountings(user.id, count_rating=abs(rating))
     elif new_count_rating > limit_raiting:
-        await message.answer("Ваш щоденний ліміт на дія.бали вичерпався")
+        await message.reply("Ваш щоденний ліміт на дія.бали вичерпався")
         return 
     else:
         counting_service.updateCounting(
@@ -53,7 +53,7 @@ async def addRating(message: types.Message, rating: int, db_userGroup: UserGroup
     
     rating = rating_service.addRating(db_reply_userGroup, rating)
     emoji = message.sticker.emoji
-    await message.answer(text.format_status(f"{emoji} Дія.рейтинг у {reply_user.full_name} тепер становить {rating}", rating)) 
+    await message.reply(text.format_status(f"{emoji} Дія.рейтинг у {reply_user.full_name} тепер становить {rating}", rating)) 
         
 @rating_router.message(filters.Command("present"))
 class PresentHandler(MessageHandler):
@@ -110,6 +110,6 @@ class PresentHandler(MessageHandler):
             )
             user_rating = rating_service.addRating(db_userGroup, -rating)
             reply_user_rating = rating_service.addRating(reply_userGroup, rating)
-            await self.event.answer(f"{user.full_name} подарував/ла {rating} дія.балів для {reply_user.full_name}")
+            await self.event.reply(f"{user.full_name} подарував/ла {rating} дія.балів для {reply_user.full_name}")
             await self.event.answer(f"Рейтинг у {user.full_name} тепер становить {user_rating}")
             await self.event.answer(text.format_status(f"Рейтинг у {reply_user.full_name} тепер становить {reply_user_rating}", reply_user_rating))

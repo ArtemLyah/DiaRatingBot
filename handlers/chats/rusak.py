@@ -15,7 +15,7 @@ async def donbass(message: types.Message):
     if await rusak_service.get_rusak(user.id):
         await message.reply("У вас вже є русак")
         return
-    await message.answer("Донбас - чудове місце для того щоб впіймати русака", reply_markup=rusak_keyboard(user.id))
+    await message.reply("Донбас - чудове місце для того щоб впіймати русака", reply_markup=rusak_keyboard(user.id))
 
 @rusak_router.callback_query(RusakData.filter())
 async def create_rusak(
@@ -28,10 +28,10 @@ async def create_rusak(
 
     await callback.message.delete()
     if random.randint(1, 100) < 40:
-        await callback.message.answer("Русак втік від вас")
+        await callback.message.reply("Русак втік від вас")
         return
     rusak, photo_url = await rusak_service.add_rusak(user.id)    
-    await callback.message.answer_photo(
+    await callback.message.reply_photo(
         photo=photo_url,
         caption=text.rusak_info(
             user.full_name,
