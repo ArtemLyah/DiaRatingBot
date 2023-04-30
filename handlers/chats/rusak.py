@@ -4,6 +4,7 @@ from keyboards.inline import rusak_keyboard
 from keyboards.inline.callback_datas import RusakData
 from services import RusakService
 from data import text
+from loader import bot
 import random
 
 rusak_router = Router()
@@ -15,7 +16,8 @@ async def donbass(message: types.Message):
     if await rusak_service.get_rusak(user.id):
         await message.reply("У вас вже є русак")
         return
-    await message.reply("Донбас - чудове місце для того щоб впіймати русака", reply_markup=rusak_keyboard(user.id))
+    await message.reply("Донбас - чудове місце для того щоб впіймати русака",
+                        reply_markup=rusak_keyboard(user.id, message.message_id))
 
 @rusak_router.callback_query(RusakData.filter())
 async def create_rusak(
@@ -25,13 +27,18 @@ async def create_rusak(
     user = callback.from_user
     if str(user.id) != callback_data.user_id:
         return
-
     await callback.message.delete()
     if random.randint(1, 100) < 40:
-        await callback.message.reply("Русак втік від вас")
+        await bot.send_message(
+            chat_id=callback.message.chat.id, 
+            text="Русак втік від вас", 
+            reply_to_message_id=callback_data.message_id
+        )
         return
     rusak, photo_url = await rusak_service.add_rusak(user.id)    
-    await callback.message.reply_photo(
+    await bot.send_photo(
+        chat_id=callback.message.chat.id, 
+        reply_to_message_id=callback_data.message_id,
         photo=photo_url,
         caption=text.rusak_info(
             user.full_name,
@@ -71,6 +78,7 @@ async def delete_rusak(message: types.Message):
     rusak = rusak_service.delete_rusak(user.id)
     if not rusak:
         await message.reply(f'У вас не має русака')
+        return
     await message.reply(f'{rusak.name} був убитий.\nНове м\'ясо на борщ')
 
 @rusak_router.message(filters.Command("compare_rusak"))

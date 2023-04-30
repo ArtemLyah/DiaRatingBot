@@ -3,7 +3,7 @@ from loader import db_session
 from sqlalchemy.sql import or_
 import aiofiles
 import random
-from typing import Tuple
+from typing import Tuple, Union
 
 class RusakService():
     file_names = "data/rusak_names.txt"
@@ -52,7 +52,7 @@ class RusakService():
             return None
         return rusak, await self.get_photo(rusak.photo_id)
     
-    def delete_rusak(self, user_id):
+    def delete_rusak(self, user_id) -> Union[None, Rusak]:
         rusak = db_session.query(Rusak)\
             .filter(Rusak.user_id == str(user_id))\
                 .first()
@@ -60,6 +60,6 @@ class RusakService():
             return None
         db_session.query(Rusak)\
             .filter(Rusak.user_id == str(user_id))\
-                .delete(synchronize_session=False)
+                .delete()
         db_session.commit()
         return rusak
