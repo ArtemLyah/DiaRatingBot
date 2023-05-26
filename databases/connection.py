@@ -11,9 +11,13 @@ class Database():
     def connect(self):
         self.engine = sa.create_engine(
             self.url, 
-            pool_pre_ping=True,
-            max_overflow=2,
-            pool_recycle=300,
+            pool_pre_ping=True, 
+            connect_args={
+                "keepalives": 1,
+                "keepalives_idle": 30,
+                "keepalives_interval": 10,
+                "keepalives_count": 5,
+            },
             pool_use_lifo=True
         )
         self.connector = self.engine.connect()
