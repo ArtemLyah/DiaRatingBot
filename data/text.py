@@ -170,24 +170,25 @@ class FormatStatus():
 format_status = FormatStatus()
 
 class FormatRandomDay():
-    filepath = "data/random_day.json"
+    filepath = "data/random_day.txt"
     def __init__(self):
         file = open(self.filepath, "r", encoding="utf-8") 
-        self.textlist = json.load(file)
+        self.textlist = file.readlines()
 
     def format_text(self, users: list[Users]) -> Tuple[str, int, list[Users]]:
         text_id = random.randrange(0, len(self.textlist))
-        format_text = self.textlist[text_id]
-        users = random.choices(users, k=format_text["n_users"])
+        text = self.textlist[text_id]
+        n_users = text.count('@{}')
+        users = random.choices(users, k=n_users)
         usernames = [user.username for user in users]
-        return format_text["text"].format(*usernames), text_id, users
+        return text.format(*usernames), text_id, users
     
     def format_text_by_text_id(self, users: list[Users], text_id) -> str:
         usernames = [user.username for user in users]
-        text = self.textlist[text_id]
-        n_users = text["n_users"]
+        text: str = self.textlist[text_id]
+        n_users = text.count('@{}')
         while len(usernames) < n_users:
             usernames.append(usernames[-1])
-        return text["text"].format(*usernames)
+        return text.format(*usernames)
 
 format_random_day = FormatRandomDay()
