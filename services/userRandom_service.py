@@ -1,4 +1,4 @@
-from databases.models import Users, UserGroup, UserRandom
+from databases import Users, UserGroup, UserRandom
 from typing import Tuple
 from services import UserService
 from loader import db_session

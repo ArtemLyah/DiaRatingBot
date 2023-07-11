@@ -1,4 +1,4 @@
-from databases.models import Groups
+from databases import Groups
 from loader import db_session
 
 class GroupService():

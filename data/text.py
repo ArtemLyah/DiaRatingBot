@@ -1,5 +1,5 @@
 from aiogram.utils.markdown import hbold, hlink
-from databases.models import Rusak, Users
+from databases import Rusak, Users
 import aiofiles
 import json
 import random

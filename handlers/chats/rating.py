@@ -1,7 +1,7 @@
 from aiogram import Router, filters, types
 from aiogram.enums import ChatType
 from services import RatingService, UserService, CountingsService
-from databases.models import Users, UserGroup, Countings
+from databases import Users, UserGroup, Countings
 from datetime import datetime
 from data import text
 import random

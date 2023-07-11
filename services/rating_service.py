@@ -1,4 +1,4 @@
-from databases.models import Users, UserGroup, Countings
+from databases import Users, UserGroup
 from services import UserService
 from loader import db_session
 from sqlalchemy.sql import func

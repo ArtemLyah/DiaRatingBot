@@ -1,4 +1,4 @@
-from databases.models import Users, Countings
+from databases import Countings
 from loader import db_session
 from utils.mics import next_update_day
 
@@ -6,7 +6,7 @@ class CountingsService():
     def addCountings(self, user_id) -> Countings:
         if counting := self.getCountings(user_id):
             return counting
-        counting = Countings(user_id = user_id)
+        counting = Countings(user_id=user_id)
         db_session.add(counting)
         db_session.commit()
         return counting

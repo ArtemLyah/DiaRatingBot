@@ -1,3 +1,4 @@
 .env
+__*.py
 /utils/logs/logs.out
 **/__pycache__

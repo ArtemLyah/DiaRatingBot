@@ -1,5 +1,5 @@
 from aiogram import types, BaseMiddleware
-from databases.models import Stickers
+from databases import Stickers
 from loader import db_session
 from typing import *
 

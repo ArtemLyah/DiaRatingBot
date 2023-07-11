@@ -1,6 +1,5 @@
-from databases.models import Users, Rusak
+from databases import Rusak
 from loader import db_session
-from sqlalchemy.sql import or_
 import aiofiles
 import random
 from typing import Tuple, Union

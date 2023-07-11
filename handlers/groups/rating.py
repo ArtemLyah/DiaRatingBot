@@ -2,7 +2,7 @@ from aiogram import Router, types, filters, F
 from aiogram.enums.chat_type import ChatType
 from aiogram.handlers import MessageHandler
 from services import RatingService, UserService, CountingsService
-from databases.models import Users, UserGroup, Countings
+from databases import Users, UserGroup, Countings
 from middlewares.rating_mw import StickerRatingMiddleware
 from filters import ChatTypeFilter
 from config import ADMINS
