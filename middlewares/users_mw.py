@@ -3,11 +3,13 @@ from services import UserService, CountingsService, GroupService
 from config import ADMINS
 from typing import *
 
-user_service = UserService()
-group_service = GroupService()
-counting_service = CountingsService()
-
 class UsersMiddleware(BaseMiddleware):
+    def __init__(self) -> None:
+        super().__init__()
+        self.user_service = UserService()
+        self.group_service = GroupService()
+        self.counting_service = CountingsService()
+
     async def __call__(self,
         handler: Callable[[types.Message, Dict[str, Any]], Awaitable[Any]],
         event: types.Update,
@@ -23,12 +25,14 @@ class UsersMiddleware(BaseMiddleware):
             case _:
                 return
 
-        user = user_service.addUser(user.id, user.full_name, user.username)
-        group_service.addGroup(group.id, group.full_name)
-        userGroup = user_service.addUserGroup(group.id, user.id)
+        user = self.user_service.addUser(user.id, user.full_name, user.username)
+        self.group_service.addGroup(group.id, group.full_name)
+        userGroup = self.user_service.addUserGroup(group.id, user.id)
+
         if userGroup.is_ban and not user.id in ADMINS:
             return
+        
         data["db_user"] = user
         data["db_userGroup"] = userGroup
-        data["db_counting"] = counting_service.addCountings(user.id)
+        data["db_counting"] = self.counting_service.addCountings(user.id)
         await handler(event, data)

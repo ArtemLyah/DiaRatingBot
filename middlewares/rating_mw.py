@@ -11,7 +11,7 @@ class StickerRatingMiddleware(BaseMiddleware):
     ) -> Any:
         sticker = event.sticker
         if sticker:
-            sticker:Stickers = db_session.query(Stickers)\
+            sticker: Stickers = db_session.query(Stickers)\
                 .filter(Stickers.file_id == sticker.file_unique_id).first()
             data["rating"] = sticker.rating if sticker else None
         await handler(event, data)

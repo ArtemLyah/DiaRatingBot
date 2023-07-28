@@ -5,20 +5,20 @@ import sqlalchemy as sa
 
 class Users(Database.Base):
     __tablename__ = "users"
-    id = sa.Column(sa.Text, unique=True, primary_key=True)
+    id = sa.Column(sa.BigInteger, unique=True, primary_key=True)
     full_name = sa.Column(sa.String)
     username = sa.Column(sa.String)
     
 class Groups(Database.Base):
     __tablename__ = "groups"
-    id = sa.Column(sa.Text, unique=True, primary_key=True)
+    id = sa.Column(sa.BigInteger, unique=True, primary_key=True)
     fullname = sa.Column(sa.String)
 
 class UserGroup(Database.Base):
     __tablename__ = "userGroup"
     id = sa.Column(sa.Integer, primary_key=True)
-    user_id = sa.Column(sa.String, sa.ForeignKey("users.id"))
-    group_id = sa.Column(sa.String, sa.ForeignKey("groups.id"))
+    user_id = sa.Column(sa.BigInteger, sa.ForeignKey("users.id"))
+    group_id = sa.Column(sa.BigInteger, sa.ForeignKey("groups.id"))
     local_rating = sa.Column(sa.Integer, default=0)
     is_ban = sa.Column(sa.Boolean, default=False)
     
@@ -41,7 +41,7 @@ class UserRandom(Database.Base):
 class Countings(Database.Base):
     __tablename__ = "countings"
     id = sa.Column(sa.Integer, primary_key=True)
-    user_id = sa.Column(sa.String, sa.ForeignKey("users.id"))
+    user_id = sa.Column(sa.BigInteger, sa.ForeignKey("users.id"))
     count_mining = sa.Column(sa.Integer, default=0)
     count_rating = sa.Column(sa.Integer, default=0)
     count_present = sa.Column(sa.Integer, default=0)
@@ -53,7 +53,7 @@ class Countings(Database.Base):
 class Rusak(Database.Base):
     __tablename__ = "rusak"
     id = sa.Column(sa.Integer, primary_key=True)
-    user_id = sa.Column(sa.String, sa.ForeignKey("users.id"))
+    user_id = sa.Column(sa.BigInteger, sa.ForeignKey("users.id"))
     name = sa.Column(sa.String)
     intellect = sa.Column(sa.Integer)
     strength = sa.Column(sa.Integer)

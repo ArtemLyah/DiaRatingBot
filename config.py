@@ -7,14 +7,6 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMINS = [905143300, 572127054]
 
-db_local_settings = {
-    "drivername":"postgresql+psycopg2",
-    "username":os.getenv("DB_LOCAL_USER"),
-    "password":os.getenv("DB_LOCAL_PASSWORD"),
-    "host":os.getenv("DB_LOCAL_HOST"),
-    "port":os.getenv("DB_LOCAL_PORT"),
-    "database":os.getenv("DB_LOCAL_NAME")
-}
 db_settings = {
     "drivername":"postgresql+psycopg2",
     "username":os.getenv("DB_USER"),

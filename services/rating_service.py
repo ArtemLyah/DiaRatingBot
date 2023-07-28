@@ -1,10 +1,7 @@
 from databases import Users, UserGroup
-from services import UserService
 from loader import db_session
 from sqlalchemy.sql import func
 from sqlalchemy.sql import and_, desc
-
-user_service = UserService()
 
 class RatingService():
     def addRating(self, user_group, rating=0) -> int:

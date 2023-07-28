@@ -174,6 +174,9 @@ class FormatRandomDay():
     def __init__(self):
         file = open(self.filepath, "r", encoding="utf-8") 
         self.textlist = file.readlines()
+        for i in range(len(self.textlist)):
+            self.textlist[i] = self.textlist[i].replace('\\n', '\n')
+            self.textlist[i] = self.textlist[i].replace('\\t', '\t')
 
     def format_text(self, users: list[Users]) -> Tuple[str, int, list[Users]]:
         text_id = random.randrange(0, len(self.textlist))

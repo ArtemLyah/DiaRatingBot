@@ -8,6 +8,6 @@ users_router.message.filter(ChatTypeFilter(ChatType.PRIVATE))
 
 
 @users_router.message(filters.CommandStart())
-async def start(message:types.Message):
+async def start(message: types.Message):
     await message.answer(text.help)
 

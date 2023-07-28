@@ -5,8 +5,11 @@ import sqlalchemy as sa
 class Database():
     Base = declarative_base()
 
-    def __init__(self, settings: dict) -> None:
-        self.url = sa.engine.url.URL.create(**settings)
+    def __init__(self, settings: dict = {}, url=None) -> None:
+        if url:
+            self.url = url
+        else:
+            self.url = sa.engine.url.URL.create(**settings)
 
     def connect(self):
         self.engine = sa.create_engine(self.url)
