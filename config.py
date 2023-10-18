@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMINS = [905143300, 572127054]
+ADMINS = [905143300, 572127054, 907720594]
 
 db_settings = {
     "drivername":"postgresql+psycopg2",
