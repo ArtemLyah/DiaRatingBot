@@ -98,7 +98,7 @@ async def inline_answers(query: str):
     count_of_exercises = random.randint(5, 50)
     topic = await topics()
     return {
-        "love" : f"Ви й {query} підходите одне одному на {heart} {percentrage}% {heart}",
+        "love" : f"Ви й {query} підходите один одному на {heart} {percentrage}% {heart}",
         "past_live" : f"В минулому житті ти був {past_live}",
         "ideology" : f"Твоя політична ідеологія: {ideology}",
         "exercises" : f"{exercise} {count_of_exercises} разів!",
