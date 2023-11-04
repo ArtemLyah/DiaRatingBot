@@ -31,7 +31,7 @@ async def handle_casualties(message: types.Message):
            f"🚛 {find_stats('ББМ', stats)}\n"+\
            f"🚜 {find_stats('Танки', stats)}\n"+\
            f"🚗 {find_stats('Автомобілі та автоцистерни', stats)}\n"+\
-           f"💣 {find_stats('Гармати', stats)}\n"+\
+           f"💣 {find_stats('Артилерійські системи', stats)}\n"+\
            f"🔥 {find_stats('РСЗВ', stats)}\n"+\
            f"✈️ {find_stats('Літаки', stats)}\n"+\
            f"🚁 {find_stats('Гелікоптери', stats)}\n"+\
