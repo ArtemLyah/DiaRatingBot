@@ -15,7 +15,7 @@ async def error_handler(event: types.ErrorEvent):
     if isinstance(event.exception, exceptions.TelegramBadRequest):
         logger.debug("TelegramBadRequest")
     if isinstance(event.exception, (PendingRollbackError, OperationalError)):
-        os.system('sudo service postgresql restart')
+        os.system('restartdb')
         await sleep(1)
         db_session.rollback()
 
