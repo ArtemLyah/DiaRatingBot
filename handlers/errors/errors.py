@@ -6,6 +6,7 @@ from config import ADMINS
 from traceback import format_exc
 from utils.logs import logger
 from asyncio import sleep
+import subprocess
 import os
 
 error_router = Router()
@@ -15,7 +16,7 @@ async def error_handler(event: types.ErrorEvent):
     if isinstance(event.exception, exceptions.TelegramBadRequest):
         logger.debug("TelegramBadRequest")
     if isinstance(event.exception, (PendingRollbackError, OperationalError)):
-        os.system('restartdb')
+        subprocess.run(['./restartdb.sh'], shell=True)
         await sleep(1)
         db_session.rollback()
 
