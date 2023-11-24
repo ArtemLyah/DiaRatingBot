@@ -6,7 +6,6 @@ from config import ADMINS
 from traceback import format_exc
 from utils.logs import logger
 from asyncio import sleep
-import subprocess
 import os
 
 error_router = Router()
@@ -15,10 +14,6 @@ error_router = Router()
 async def error_handler(event: types.ErrorEvent):
     if isinstance(event.exception, exceptions.TelegramBadRequest):
         logger.debug("TelegramBadRequest")
-    if isinstance(event.exception, (PendingRollbackError, OperationalError)):
-        subprocess.run(['./restartdb.sh'], shell=True)
-        await sleep(1)
-        db_session.rollback()
 
     logger.exception(format_exc())
     await bot.send_message(ADMINS[0], format_exc(limit=-5, chain=False))
