@@ -52,13 +52,13 @@ class RusakService():
         return rusak, await self.get_photo(rusak.photo_id)
     
     def delete_rusak(self, user_id) -> Union[None, Rusak]:
-        rusak = db_session.query(Rusak)\
+        rusak: Rusak = db_session.query(Rusak)\
             .filter(Rusak.user_id == str(user_id))\
                 .first()
         if not rusak:
             return None
         db_session.query(Rusak)\
-            .filter(Rusak.user_id == str(user_id))\
+            .filter(Rusak.id == rusak.id)\
                 .delete()
         db_session.commit()
         return rusak

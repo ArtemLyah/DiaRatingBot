@@ -6,7 +6,7 @@ def rusak_keyboard(user_id, message_id):
         [
             InlineKeyboardButton(
                 text="Піймати русака", 
-                callback_data=RusakData(user_id=str(user_id), message_id=message_id).pack()
+                callback_data=RusakData(user_id=str(user_id), message_id=str(message_id)).pack()
             )
         ]
     ]
