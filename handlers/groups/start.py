@@ -25,13 +25,13 @@ group_service = GroupService()
 )
 async def join_group(event: types.ChatMemberUpdated, bot: Bot):
     chat = event.chat
+    await add_admin_commands_to_chat(bot, chat.id)
     group_service.addGroup(chat.id, chat.full_name)
     await bot.send_message(chat.id, text.help)
 
 @group_router.message(filters.CommandStart())
 async def start(message: types.Message):
     chat = message.chat
-    group_service.addGroup(chat.id, chat.full_name)
     await add_admin_commands_to_chat(bot, chat.id)
     await message.answer(text.help)
 
