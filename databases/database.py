@@ -14,11 +14,6 @@ class Database():
     def connect(self):
         self.engine = sa.create_engine(
             self.url, 
-            pool_size=10,
-            max_overflow=2,
-            pool_recycle=300,
-            pool_pre_ping=True,
-            pool_use_lifo=True
         )
         self.connector = self.engine.connect()
         self.session = sessionmaker(self.engine)()

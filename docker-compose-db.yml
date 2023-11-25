@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  database:
+    image: postgres
+    container_name: database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./volumes:/var/lib/postgresql/data
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    name: postgres
+    driver: bridge
