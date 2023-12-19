@@ -183,7 +183,12 @@ class FormatRandomDay():
         text = self.textlist[text_id]
         n_users = text.count('@{}')
         users = random.choices(users, k=n_users)
-        usernames = [user.username for user in users]
+        usernames = []
+        for user in users:
+            if user.username:
+                usernames.append(user.username)
+            else:
+                usernames.append(user.full_name)
         return text.format(*usernames), text_id, users
     
     def format_text_by_text_id(self, users: list[Users], text_id) -> str:
